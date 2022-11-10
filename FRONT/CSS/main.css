@@ -38,7 +38,8 @@ header {
   height: 75px;
   left: 0%;
   top: calc(50% - 75px/2);
-  background-color: #d3d3d3;;
+  background-color: #d3d3d3;
+  ;
 }
 
 .side-button-1 .side-b {
@@ -270,4 +271,38 @@ main {
   transition: 1s;
   border-radius: 75px;
   background-color: #CCE5FF;
+}
+
+.container {
+  position: relative;
+  left: 10%;
+  max-width: 80%;
+}
+
+.task__photo {
+  width: 100%;
+}
+
+.task__form {
+  font-size: 2em;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.task__answer {
+  font-size: 2rem;
+  height: 100px;
+  width: 30%;
+  border: 2px solid black;
+}
+
+.task__button {
+  font-size: 2rem;
+  background-color: #ffffff00;
+  
+}
+.end {
+  position: relative;
 }

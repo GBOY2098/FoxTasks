@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,30 +9,66 @@
   <link rel="stylesheet" href="CSS/zero.css">
   <link rel="stylesheet" href="CSS/main.css">
 </head>
+
 <body>
   <header>
-    <button id="Account">
-    </button>
-    <a href="" class="menu">
-      <div class="menu__line"></div>
-      <br>
-      <div class="menu__line"></div>
-      <br>
-      <div class="menu__line"></div>
-    </a>
+    <div class="side-button-1-wr">
+      <label class="side-button-1" for="side-checkbox">
+        <div class="side-b side-open">Меню</div>
+      </label>
+    </div>
     <samp id="Main_page">
       Выполнение
     </samp>
   </header>
   <div class="line"></div>
   <main>
-    <article class="task">
-      <form class="task__form" name="form1" method="get">
-        Ответ:
-        <input class="task__answer" cl type="text">
-        <button class="task__button">Отправить ответ</button> 
-      </form>
-    </article>
+    <input type="checkbox" id="side-checkbox" />
+    <div class="side-panel">
+      <label class="side-button-2" for="side-checkbox">+</label>
+      <div class="side-title">Меню:</div>
+      <p>Аккаунт</p>
+      <p>Главная</p>
+      <p>Еще что-то</p>
+    </div>
+    <div class="container">
+      <article class="task">
+        <img class="task__photo" src="Tasks/Picsart_22-11-10_19-58-45-176.jpg" alt="задание">
+        <form class="task__form" name="form1" method="get">
+          Ответ:
+          <input class="task__answer" type="text" placeholder=" Введите ответ">
+          <button class="task__button">Отправить ответ</button>
+        </form>
+      </article>
+      <article class="task">
+        <img class="task__photo" src="Tasks/Picsart_22-11-10_19-59-41-244.jpg" alt="задание">
+        <form class="task__form" name="form2" method="get">
+          Ответ:
+          <input class="task__answer" type="text" placeholder=" Введите ответ">
+          <button class="task__button">Отправить ответ</button>
+        </form>
+      </article>
+      <article class="task">
+        <img class="task__photo" src="Tasks/Picsart_22-11-10_20-00-36-549.jpg" alt="задание">
+        <form class="task__form" name="form3" method="get">
+          Ответ:
+          <input class="task__answer" type="text" placeholder=" Введите ответ">
+          <button class="task__button">Отправить ответ</button>
+        </form>
+      </article>
+      <article class="task">
+        <img class="task__photo" src="Tasks/Picsart_22-11-10_20-01-03-923.jpg" alt="задание">
+        <form class="task__form" name="form4" method="get">
+          Ответ:
+          <input class="task__answer" type="text" placeholder=" Введите ответ">
+          <button class="task__button">Отправить ответ</button>
+        </form>
+      </article>
+    </div>
+    <div class="end">
+      <a  href="main.html">Завершить</a>
+    </div>
   </main>
 </body>
+
 </html>
