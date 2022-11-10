@@ -30,9 +30,6 @@ main {
   height: 73px;
   left: calc(50% - 240px/2);
   top: calc(50% - 73px/2);
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 4em;
   line-height: 73px;
   display: inline;
@@ -74,17 +71,13 @@ main {
   height: 75px;
   left: calc(100% - 340px);
   top: calc(50% - 75px/2);
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 1.5em;
   display: flex;
   align-items: center;
-  text-align: center;
-  color: #000000;
+  justify-content: center;
   border-radius: 75px;
   border: 2px solid #000000;
-  
+  background-color: rgb(222, 222, 222);
 }
 
 .work__button:hover {
