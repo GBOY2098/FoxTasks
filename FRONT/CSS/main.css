@@ -44,7 +44,7 @@ main {
   height: 75px;
   left: calc(100% - 75px - 50px);
   top: calc(50% - 75px/2);
-  background-color: white;
+  background-color: #00000000;
 }
 
 .menu__line {
@@ -77,6 +77,7 @@ main {
   justify-content: center;
   border-radius: 75px;
   border: 2px solid #000000;
+
   background-color: rgb(222, 222, 222);
 }
 
