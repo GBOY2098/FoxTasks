@@ -9,7 +9,6 @@ def work():
 
 
 @app.route("/")
-@app.route("/home")
 def home():
     return render_template('main.html')
 
