@@ -4,6 +4,58 @@ header {
   height: 10%;
 }
 
+
+.btn{
+  margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 88%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    border-radius: 4px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    transition: all 0.5s;
+    cursor: pointer;
+    
+    
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  /* transition: 0.5s; */
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 main {
   position: relative;
 }
@@ -28,6 +80,9 @@ main {
   position: absolute;
   left: calc(50% - 240px/2);
   top: calc(50% - 73px/2);
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
   font-size: 4em;
   line-height: 73px;
   display: inline;
@@ -43,6 +98,7 @@ main {
   left: calc(100% - 75px - 50px);
   top: calc(50% - 75px/2);
   background-color: #00000000;
+  background-color: white;
 }
 
 .menu__line {
@@ -69,14 +125,20 @@ main {
   height: 75px;
   left: calc(100% - 340px);
   top: calc(50% - 75px/2);
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
   font-size: 1.5em;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  color: #000000;
   border-radius: 75px;
   border: 2px solid #000000;
 
   background-color: rgb(222, 222, 222);
+  
 }
 
 .work__button:hover {

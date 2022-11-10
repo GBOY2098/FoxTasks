@@ -1,6 +1,13 @@
 from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
+app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/CSS')
+
+
+@app.route("/work")
+def work():
+    return render_template('work.html')
 
 
 @app.route("/")
