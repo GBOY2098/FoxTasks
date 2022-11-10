@@ -1,7 +1,5 @@
-from flask import Flask
 from flask import Flask, render_template
 
-app = Flask(__name__)
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/CSS')
 
 
@@ -12,7 +10,6 @@ def work():
 
 @app.route("/")
 def home():
-    return "Привет"
     return render_template('main.html')
 
 
