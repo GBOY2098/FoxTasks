@@ -13,6 +13,7 @@ def work():
 @app.route("/")
 def home():
     return "Привет"
+    return render_template('main.html')
 
 
 if __name__ == '__main__':
