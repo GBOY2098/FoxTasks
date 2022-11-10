@@ -26,8 +26,6 @@ main {
 
 #Main_page {
   position: absolute;
-  width: 240px;
-  height: 73px;
   left: calc(50% - 240px/2);
   top: calc(50% - 73px/2);
   font-size: 4em;
@@ -86,4 +84,5 @@ main {
   border-radius: 75px;
   background-color: #CCE5FF;
 }
+
 
