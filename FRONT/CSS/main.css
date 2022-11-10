@@ -5,133 +5,149 @@ header {
 }
 
 #side-checkbox {
-    display: none;
+  display: none;
 }
+
 .side-panel {
-    position: fixed;
-    z-index: 999999;
-    top: 0;
-    left: -360px;
-    background: #350436;
-    transition: all 0.5s;  
-    width: 320px;
-    height: 100vh;
-    box-shadow: 10px 0 20px rgba(0,0,0,0.4);
-    color: #FFF;
-    padding: 40px 20px;
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: -360px;
+  background: #350436;
+  transition: all 0.5s;
+  width: 320px;
+  height: 100vh;
+  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.4);
+  color: #FFF;
+  padding: 40px 20px;
 }
+
 .side-title {
-    font-size: 20px;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #BFE2FF;
+  font-size: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #BFE2FF;
 }
+
 /* Оформление кнопки на странице */
 .side-button-1-wr {
-    /* text-align: center; Контейнер для кнопки, чтобы было удобнее ее разместить */
-    position: absolute;
-    width: 75px;
-    height: 75px;
-    left: calc(100% - 75px - 50px);
-    top: calc(50% - 75px/2);
-    background-color: white;
+  /* text-align: center; Контейнер для кнопки, чтобы было удобнее ее разместить */
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  left: calc(100% - 75px - 50px);
+  top: calc(50% - 75px/2);
+  background-color: white;
 }
+
 .side-button-1 .side-b {
-    margin: 10px;
-    text-decoration: none;
-    position: relative;
-    font-size: 20px;
-    line-height: 20px;
-    padding: 12px 30px;
-    color: #FFF;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Roboto Condensed', Тahoma, sans-serif;
-    background: #350436;
-    cursor: pointer;
-    border: 2px solid #010a13;
+  margin: 10px;
+  text-decoration: none;
+  position: relative;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 12px 30px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  background: #350436;
+  cursor: pointer;
+  border: 2px solid #010a13;
 }
+
 .side-button-1 .side-b:hover,
 .side-button-1 .side-b:active,
 .side-button-1 .side-b:focus {
-    color: #FFF;
+  color: #FFF;
 }
+
 .side-button-1 .side-b:after,
 .side-button-1 .side-b:before {
-    position: absolute;
-    height: 4px;
-    left: 50%;
-    bottom: -6px;
-    content: "";
-    transition: all 280ms ease-in-out;
-    width: 0;
+  position: absolute;
+  height: 4px;
+  left: 50%;
+  bottom: -6px;
+  content: "";
+  transition: all 280ms ease-in-out;
+  width: 0;
 }
+
 .side-button-1 .side-open:after,
 .side-button-1 .side-open:before {
-    background: rgb(66, 28, 116);
+  background: rgb(66, 28, 116);
 }
+
 .side-button-1 .side-close:after,
 .side-button-1 .side-close:before {
-    background: red;
+  background: red;
 }
+
 .side-button-1 .side-b:before {
-    top: -6px;
+  top: -6px;
 }
+
 .side-button-1 .side-b:hover:after,
 .side-button-1 .side-b:hover:before {
-    width: 100%;
-    left: 0;
+  width: 100%;
+  left: 0;
 }
+
 /* Переключатели кнопки 1 */
 .side-button-1 .side-close {
-    display: none;
+  display: none;
 }
-#side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-open {
-    display: none;
+
+#side-checkbox:checked+.side-panel+.side-button-1-wr .side-button-1 .side-open {
+  display: none;
 }
-#side-checkbox:checked + .side-panel + .side-button-1-wr .side-button-1 .side-close {
-    display: block;
+
+#side-checkbox:checked+.side-panel+.side-button-1-wr .side-button-1 .side-close {
+  display: block;
 }
-#side-checkbox:checked + .side-panel {
-    left: 0;
+
+#side-checkbox:checked+.side-panel {
+  left: 0;
 }
+
 /* Оформление кнопки на панеле */
 .side-button-2 {
-    font-size: 30px;
-    border-radius: 20px;
-    position: absolute;
-    z-index: 1;
-    top: 8px;
-    right: 8px;
-    cursor: pointer;
-    transform: rotate(45deg);
-    color: #BFE2FF;   
-    transition: all 280ms ease-in-out;   
+  font-size: 30px;
+  border-radius: 20px;
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  transform: rotate(45deg);
+  color: #BFE2FF;
+  transition: all 280ms ease-in-out;
 }
+
 .side-button-2:hover {
-    transform: rotate(45deg) scale(1.1);   
-    color: #FFF;
+  transform: rotate(45deg) scale(1.1);
+  color: #FFF;
 }
 
 
-.btn{
+.btn {
   margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 88%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    display: inline-block;
-    border-radius: 4px;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    transition: all 0.5s;
-    cursor: pointer;
-    
-    
+  position: absolute;
+  top: 50%;
+  left: 88%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+
+
 }
 
 .btn span {
@@ -165,6 +181,7 @@ header {
   opacity: 1;
   right: 0;
 }
+
 main {
   position: relative;
 }
@@ -245,7 +262,7 @@ main {
   color: #000000;
   border-radius: 75px;
   border: 2px solid #000000;
-  
+
 }
 
 .work__button:hover {
@@ -253,4 +270,3 @@ main {
   border-radius: 75px;
   background-color: #CCE5FF;
 }
-
