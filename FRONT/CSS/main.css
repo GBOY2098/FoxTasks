@@ -97,7 +97,6 @@ main {
   height: 75px;
   left: calc(100% - 75px - 50px);
   top: calc(50% - 75px/2);
-  background-color: #00000000;
   background-color: white;
 }
 
@@ -131,13 +130,10 @@ main {
   font-size: 1.5em;
   display: flex;
   align-items: center;
-  justify-content: center;
   text-align: center;
   color: #000000;
   border-radius: 75px;
   border: 2px solid #000000;
-
-  background-color: rgb(222, 222, 222);
   
 }
 
