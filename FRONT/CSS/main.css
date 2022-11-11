@@ -3,7 +3,12 @@ header {
   width: 100%;
   height: 10%;
   background-color: #d3d3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
+
 
 #side-checkbox {
   display: none;
@@ -194,28 +199,10 @@ main {
   background-color: #000000;
 }
 
-#Account {
-  position: absolute;
-  width: 75px;
-  height: 75px;
-  left: 50px;
-  top: calc(50% - 75px/2);
-  border-radius: 50px;
-  background: #FF0000;
-}
 
-#Main_page {
-  position: absolute;
-  width: 240px;
-  height: 73px;
-  left: calc(50% - 240px/2);
-  top: calc(50% - 73px/2);
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 400;
+.page_name{
   font-size: 4em;
-  line-height: 73px;
-  display: inline;
+  display: flex;
   align-items: center;
   text-align: center;
   color: #000000;
@@ -254,9 +241,6 @@ main {
   height: 75px;
   left: calc(100% - 340px);
   top: calc(50% - 75px/2);
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 1.5em;
   display: flex;
   align-items: center;
@@ -271,12 +255,6 @@ main {
   transition: 1s;
   border-radius: 75px;
   background-color: #CCE5FF;
-}
-
-.container {
-  position: relative;
-  left: 10%;
-  max-width: 80%;
 }
 
 .task__photo {
@@ -300,9 +278,5 @@ main {
 
 .task__button {
   font-size: 2rem;
-  background-color: #ffffff00;
-  
-}
-.end {
-  position: relative;
+  background-color: #35709A;
 }
