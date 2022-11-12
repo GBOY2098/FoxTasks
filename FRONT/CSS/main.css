@@ -256,27 +256,63 @@ main {
   border-radius: 75px;
   background-color: #CCE5FF;
 }
-
+.task{
+  border: 2.5px solid black;
+  border-radius: 50px;
+  background: #350436;
+  margin-top: 50px;
+}
 .task__photo {
   width: 100%;
+  border-radius: 48px;
 }
 
 .task__form {
-  font-size: 2em;
-  font-weight: 600;
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-
-.task__answer {
-  font-size: 2rem;
-  height: 100px;
-  width: 30%;
-  border: 2px solid black;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  background: #350436;
+  border-radius: 0px 0px 48.5px 48.5px;
 }
 
 .task__button {
-  font-size: 2rem;
-  background-color: #35709A;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 12px 30px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  background: #350436;
+  cursor: pointer;
+  border: 2px solid #010a13;
+  text-decoration: none;
+}
+.end{
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+}
+.end__button {
+  margin-top: 50px;
+  position: relative;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  background: #350436;
+  cursor: pointer;
+  border: 2px solid #010a13;
+  text-decoration: none;
+  margin-bottom: 50px;
 }
