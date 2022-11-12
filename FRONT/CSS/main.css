@@ -282,7 +282,8 @@ main {
   border-radius: 0px 0px 48.5px 48.5px;
 }
 
-.task__button {
+.task__button,
+.end__button {
   font-size: 20px;
   line-height: 20px;
   padding: 12px 30px;
@@ -301,18 +302,8 @@ main {
   justify-content: center;
 }
 .end__button {
-  margin-top: 50px;
   position: relative;
   font-size: 30px;
   line-height: 30px;
-  padding: 12px 30px;
-  color: #FFF;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  background: #350436;
-  cursor: pointer;
-  border: 2px solid #010a13;
-  text-decoration: none;
-  margin-bottom: 50px;
+  margin-top: 50px;
 }
