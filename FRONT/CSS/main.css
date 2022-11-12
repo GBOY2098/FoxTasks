@@ -260,13 +260,23 @@ main {
   border: 2.5px solid black;
   border-radius: 50px;
   background: #350436;
-  margin-top: 50px;
+  margin-top: 100px;
 }
 .task__photo {
   width: 100%;
   border-radius: 48px;
 }
 
+.task__form1,
+.task__form2,
+.task__form2,
+.task__form3,
+.task__form4,
+.task__form5,
+.task__form6,
+.task__form7,
+.task__form8,
+.task__form9,
 .task__form {
   display: flex;
   justify-content: space-around;
