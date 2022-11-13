@@ -235,7 +235,7 @@ main {
   color: black;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
 }
 .work__description{
   background-color: #fff;
@@ -290,7 +290,7 @@ main {
   color: #FFF;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
   background: #350436;
   border-radius: 0px 0px 28px 28px;
 }
@@ -302,12 +302,19 @@ main {
   color: #FFF;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
   cursor: pointer;
-  border: 2px solid #010a13;
+  border: 0px solid #010a13;
   text-decoration: none;
-  background-color: #c2c2c200;
+  background-color: #c2c2c260;
+  border-radius: 10px;
 }
+
+.task__button:hover{
+  background-color: #c2c2c29a;
+  transition: 150ms;
+}
+
 .end{
   font-size: 2em;
   display: flex;
@@ -318,7 +325,7 @@ main {
   color: #FFF;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
   background: #350436;
   cursor: pointer;
   border: 2px solid #010a13;
@@ -333,4 +340,9 @@ main {
 }
 .incorrect{
   background: #fc4048; 
+}
+
+.task__answer{
+  border-radius: 10px;
+  padding-left: 5px;
 }

@@ -18,7 +18,7 @@
   {% if task['is_correct'] == False %}
     incorrect
   {% endif %}"">
-    <img class="task__photo" src={{ task['photo'] }}>
+    <img class="task__photo" src={{ task['photo'] }} alt="Missing image">
     <form class="form 
     {% if task['is_correct'] == True %}
       correct
@@ -28,13 +28,21 @@
     {% endif %}"
     method="POST">
       Ответ:
-      <input name={{ task['id'] }} class="task__answer1" type="text" placeholder="Введите ответ" value={{ task['last_answer'] }}>
-      <input type="submit" class="task__button"></input>
+      <input name={{ task['id'] }} class="task__answer" 
+      {% if task['is_correct'] == True %}
+        disabled
+      {% endif %}
+      type="text" placeholder="Введите ответ" value={{ task['last_answer'] }}>
+      <input type="submit"
+      {% if task['is_correct'] == True %}
+        disabled
+      {% endif %}
+      class="task__button" value="Отправить"></input>
     </form>
   </article>
   {% endfor %}
   <div class="end" >
-    <a  class="end__button" href="/">Завершить</a>
+    <a class="end__button" href="/">Завершить</a>
   </div>
   <br>
 </div>
