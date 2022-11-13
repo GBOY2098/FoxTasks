@@ -329,8 +329,11 @@ main {
   margin-top: 50px;
 }
 .correct{
-  background: #2db32d;  
+  background-color: #2db32d;  
 }
 .incorrect{
-  background: #fc4048; 
+  background-color: #fc4048; 
+}
+.undone{
+  background-color: #ffc905
 }

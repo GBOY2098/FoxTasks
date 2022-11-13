@@ -13,14 +13,13 @@ def work():
     if request.method == 'POST':
         id = list(request.form.keys())[0]
         answer = request.form[str(id)]
-        
-        if answer == answers[int(id)]:
-            tasks[int(id)]['is_correct'] = True
+        if answer == answers[int(id)] and tasks[int(id)]['last_answer']=="":
+            tasks[int(id)]['is_correct'] = 0
+        elif answer == answers[int(id)]:
+            tasks[int(id)]['is_correct'] = 2
         else:
-            tasks[int(id)]['is_correct'] = False
-
+            tasks[int(id)]['is_correct'] = 1
         tasks[int(id)]['last_answer'] = answer
-        
     return render_template('work.html', tasks=tasks)
 
 @app.route("/")

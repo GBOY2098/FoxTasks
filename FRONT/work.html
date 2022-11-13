@@ -12,29 +12,35 @@
 <div class="container">
   {% for task in tasks %}
   <article class="task task1
-  {% if task['is_correct'] == True %}
+  {% if task['is_correct'] == 0 %}
     correct
   {% endif %}
-  {% if task['is_correct'] == False %}
+  {% if task['is_correct'] == 1 %}
     incorrect
-  {% endif %}"">
+  {% endif %}
+  {% if task['is_correct'] == 2 %}
+    undone
+  {% endif %}">
     <img class="task__photo" src={{ task['photo'] }} alt="Missing image">
     <form class="form 
-    {% if task['is_correct'] == True %}
+    {% if task['is_correct'] == 0 %}
       correct
     {% endif %}
-    {% if task['is_correct'] == False %}
+    {% if task['is_correct'] == 1 %}
       incorrect
+    {% endif %}
+    {% if task['is_correct'] == 2 %}
+      undone
     {% endif %}"
     method="POST">
       Ответ:
       <input name={{ task['id'] }} class="task__answer" 
-      {% if task['is_correct'] == True %}
+      {% if task['is_correct'] == 0 or task['is_correct'] == 2 %}
         disabled
       {% endif %}
       type="text" placeholder="Введите ответ" value={{ task['last_answer'] }}>
       <input type="submit"
-      {% if task['is_correct'] == True %}
+      {% if task['is_correct'] == 0 or task['is_correct'] == 2 %}
         disabled
       {% endif %}
       class="task__button" value="Отправить"></input>
