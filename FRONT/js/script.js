@@ -29,22 +29,40 @@ for(var i=1; i<5 ;i++){
 }
 
 // for(var i=1; i<5 ;i++){ 
-//   const form =document.querySelector(".task__form"+String(i))
-//   console.log(form)
-//   form.addEventListener('submit', function (event) {
-//     event.preventDefault()
-//     const answer = document.querySelector(".task__answer"+String(i))
-//     const task_el = document.querySelector(".task"+String(i))
-//     if (answer.value==correct_answer[i-1]){
-//       const answer_correction_el=document.createElement("div")
-//       answer_correction_el.classList.add("true","container")
-//       answer_correction_el.innerHTML = "Верно"
-//       task_el.appendChild(answer_correction_el)
-//     }else{
-//       const answer_correction_el=document.createElement("div")
-//       answer_correction_el.classList.add("false","container")
-//       answer_correction_el.innerHTML="Неверно" 
-//       task_el.appendChild(answer_correction_el)
-//     }
-//   })
+  const form1 =document.querySelector(".task__form"+String(1))
+  console.log(form1)
+  form1.addEventListener('submit', function (event) {
+    event.preventDefault()
+    const answer = document.querySelector(".task__answer"+String(1))
+    const task_el = document.querySelector(".task"+String(1))
+    if (answer.value==correct_answer[0]){
+      const answer_correction_el=document.createElement("div")
+      answer_correction_el.classList.add("true","container")
+      answer_correction_el.innerHTML = "Верно"
+      task_el.appendChild(answer_correction_el)
+    }else{
+      const answer_correction_el=document.createElement("div")
+      answer_correction_el.classList.add("false","container")
+      answer_correction_el.innerHTML="Неверно" 
+      task_el.appendChild(answer_correction_el)
+    }
+  })
 // }
+const form2 =document.querySelector(".task__form"+String(2))
+console.log(form2)
+form2.addEventListener('submit', function (event) {
+  event.preventDefault()
+  const answer = document.querySelector(".task__answer"+String(2))
+  const task_el = document.querySelector(".task"+String(2))
+  if (answer.value==correct_answer[1]){
+    const answer_correction_el=document.createElement("div")
+    answer_correction_el.classList.add("true","container")
+    answer_correction_el.innerHTML = "Верно"
+    task_el.appendChild(answer_correction_el)
+  }else{
+    const answer_correction_el=document.createElement("div")
+    answer_correction_el.classList.add("false","container")
+    answer_correction_el.innerHTML="Неверно" 
+    task_el.appendChild(answer_correction_el)
+  }
+})

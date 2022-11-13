@@ -225,30 +225,45 @@ main {
 }
 
 .work {
+  margin-top: 50px;
   position: relative;
   width: 90%;
-  height: 125px;
   left: 5%;
-  background: #FFCC99;
+  background: #350436;
   border: 2px solid #000000;
-  border-radius: 75px;
+  border-radius: 50px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+}
+.work__description{
+  background-color: #fff;
+  position: relative;
+  border: 2px solid #000000;
+  border-radius:48px;
+  font-weight: 500;
+}
+.work__type{
+  font-size: 35px;
+  line-height: 35px;
+  padding: 12px 30px;
+}
+.work__name{
+  font-size: 25px;
+  line-height: 25px;
+  padding: 12px 30px;
 }
 
-
 .work__button {
-  position: relative;
-  width: 300px;
-  height: 75px;
-  left: calc(100% - 340px);
-  top: calc(50% - 75px/2);
-  font-size: 1.5em;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  text-align: center;
-  color: #000000;
-  border-radius: 75px;
-  border: 2px solid #000000;
-
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  color: #FFF;
+  text-decoration: none;
 }
 
 .work__button:hover {
@@ -309,6 +324,7 @@ main {
   margin-top: 50px;
 }
 .true{
+  height: 60px;
   font-size: 30px;
   line-height: 30px;
   padding: 12px 30px;
@@ -322,6 +338,9 @@ main {
   background-color: #2db32d;
   display: flex;
   justify-content: center;
+  border-radius: 0px 0px 50px 50px;
+  position: relative;
+  top: -60px;
 }
 .false{
   font-size: 30px;
@@ -337,4 +356,7 @@ main {
   background-color: #fc4048;
   display: flex;
   justify-content: center;
+  border-radius: 0px 0px 50px 50px;
+  position: relative;
+  top: -60px;
 }
