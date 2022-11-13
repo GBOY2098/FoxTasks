@@ -256,7 +256,18 @@ main {
   border-radius: 75px;
   background-color: #CCE5FF;
 }
-.task{
+.task,
+.task1,
+.task2,
+.task3,
+.task4,
+.task5,
+.task6,
+.task7,
+.task8,
+.task9,
+.task10{
+  position: relative;
   border: 2.5px solid black;
   border-radius: 50px;
   background: #350436;
@@ -277,6 +288,7 @@ main {
 .task__form7,
 .task__form8,
 .task__form9,
+.task__form10,
 .task__form {
   display: flex;
   justify-content: space-around;
@@ -316,4 +328,11 @@ main {
   font-size: 30px;
   line-height: 30px;
   margin-top: 50px;
+}
+.true{
+  position: absolute;
+  
+  z-index: 9999;
+  height: 10%;
+  background-color: #2db32d;
 }
