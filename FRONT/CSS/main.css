@@ -1,3 +1,10 @@
+:root{
+  --gray:#878787;
+  --purple: #350436;
+  --green:#2db32d;
+  --red:#fc4048;
+
+}
 header {
   position: relative;
   width: 100%;
@@ -231,7 +238,7 @@ main {
   left: 5%;
   background: #350436;
   border: 2px solid #000000;
-  border-radius: 50px;
+  border-radius: 30px;
   color: black;
   font-weight: bold;
   text-transform: uppercase;
@@ -241,7 +248,7 @@ main {
   background-color: #fff;
   position: relative;
   border: 2px solid #000000;
-  border-radius:48px;
+  border-radius:28px;
   font-weight: 500;
 }
 .work__type{
@@ -266,21 +273,18 @@ main {
   text-decoration: none;
 }
 
-.work__button:hover {
-  transition: 1s;
-  border-radius: 75px;
-  background-color: #CCE5FF;
-}
 .task{
   position: relative;
   border: 2.5px solid black;
-  border-radius: 50px;
+  border-radius: 30px;
   background: #350436;
   margin-top: 100px;
 }
+
+
 .task__photo {
   width: 100%;
-  border-radius: 48px;
+  border-radius: 28px;
 }
 
 .form{
@@ -295,11 +299,10 @@ main {
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
   background: #350436;
-  border-radius: 0px 0px 48.5px 48.5px;
+  border-radius: 0px 0px 28px 28px;
 }
 
-.task__button,
-.end__button {
+.task__button{
   font-size: 20px;
   line-height: 20px;
   padding: 12px 30px;
@@ -307,7 +310,7 @@ main {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  background: #350436;
+  background: #525252;
   cursor: pointer;
   border: 2px solid #010a13;
   text-decoration: none;
@@ -318,45 +321,23 @@ main {
   justify-content: center;
 }
 .end__button {
+  padding: 12px 30px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  background: #350436;
+  cursor: pointer;
+  border: 2px solid #010a13;
+  text-decoration: none;
   position: relative;
   font-size: 30px;
   line-height: 30px;
   margin-top: 50px;
 }
-.true{
-  height: 60px;
-  font-size: 30px;
-  line-height: 30px;
-  padding: 12px 30px;
-  color: #FFF;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  cursor: pointer;
-  border: 2px solid #010a13;
-  z-index: 9999;
-  background-color: #2db32d;
-  display: flex;
-  justify-content: center;
-  border-radius: 0px 0px 50px 50px;
-  position: relative;
-  top: -60px;
+.correct{
+  background: #2db32d;  
 }
-.false{
-  font-size: 30px;
-  line-height: 30px;
-  padding: 12px 30px;
-  color: #FFF;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  cursor: pointer;
-  border: 2px solid #010a13;
-  z-index: 9999;
-  background-color: #fc4048;
-  display: flex;
-  justify-content: center;
-  border-radius: 0px 0px 50px 50px;
-  position: relative;
-  top: -60px;
+.uncorrect{
+  background: #fc4048; 
 }
