@@ -256,17 +256,7 @@ main {
   border-radius: 75px;
   background-color: #CCE5FF;
 }
-.task,
-.task1,
-.task2,
-.task3,
-.task4,
-.task5,
-.task6,
-.task7,
-.task8,
-.task9,
-.task10{
+.task{
   position: relative;
   border: 2.5px solid black;
   border-radius: 50px;
@@ -278,18 +268,7 @@ main {
   border-radius: 48px;
 }
 
-.task__form1,
-.task__form2,
-.task__form2,
-.task__form3,
-.task__form4,
-.task__form5,
-.task__form6,
-.task__form7,
-.task__form8,
-.task__form9,
-.task__form10,
-.task__form {
+.form{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -330,9 +309,32 @@ main {
   margin-top: 50px;
 }
 .true{
-  position: absolute;
-  
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  cursor: pointer;
+  border: 2px solid #010a13;
   z-index: 9999;
-  height: 10%;
   background-color: #2db32d;
+  display: flex;
+  justify-content: center;
+}
+.false{
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  cursor: pointer;
+  border: 2px solid #010a13;
+  z-index: 9999;
+  background-color: #fc4048;
+  display: flex;
+  justify-content: center;
 }
