@@ -306,7 +306,7 @@ main {
   cursor: pointer;
   border: 2px solid #010a13;
   text-decoration: none;
-  background-color: #00000000;
+  background-color: #ff0707f9;
 }
 .end{
   font-size: 2em;
@@ -331,6 +331,6 @@ main {
 .correct{
   background: #2db32d;  
 }
-.uncorrect{
+.incorrect{
   background: #fc4048; 
 }

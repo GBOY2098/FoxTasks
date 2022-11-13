@@ -225,47 +225,59 @@ main {
 }
 
 .work {
+  margin-top: 50px;
   position: relative;
   width: 90%;
-  height: 125px;
   left: 5%;
-  background: #FFCC99;
+  background: #350436;
   border: 2px solid #000000;
-  border-radius: 75px;
+  border-radius: 30px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
 }
-
+.work__description{
+  background-color: #fff;
+  position: relative;
+  border: 2px solid #000000;
+  border-radius:28px;
+  font-weight: 500;
+}
+.work__type{
+  font-size: 35px;
+  line-height: 35px;
+  padding: 12px 30px;
+}
+.work__name{
+  font-size: 25px;
+  line-height: 25px;
+  padding: 12px 30px;
+}
 
 .work__button {
-  position: relative;
-  width: 300px;
-  height: 75px;
-  left: calc(100% - 340px);
-  top: calc(50% - 75px/2);
-  font-size: 1.5em;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  text-align: center;
-  color: #000000;
-  border-radius: 75px;
-  border: 2px solid #000000;
-
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  color: #FFF;
+  text-decoration: none;
 }
 
-.work__button:hover {
-  transition: 1s;
-  border-radius: 75px;
-  background-color: #CCE5FF;
-}
 .task{
   position: relative;
   border: 2.5px solid black;
-  border-radius: 50px;
+  border-radius: 30px;
   background: #350436;
   margin-top: 100px;
 }
+
+
 .task__photo {
   width: 100%;
-  border-radius: 48px;
+  border-radius: 28px;
 }
 
 .form{
@@ -280,14 +292,28 @@ main {
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
   background: #350436;
-  border-radius: 0px 0px 48.5px 48.5px;
+  border-radius: 0px 0px 28px 28px;
 }
 
-
-.task__button,
-.end__button {
+.task__button{
   font-size: 20px;
   line-height: 20px;
+  padding: 12px 30px;
+  color: #FFF;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  cursor: pointer;
+  border: 2px solid #010a13;
+  text-decoration: none;
+  background-color: #c2c2c200;
+}
+.end{
+  font-size: 2em;
+  display: flex;
+  justify-content: center;
+}
+.end__button {
   padding: 12px 30px;
   color: #FFF;
   font-weight: bold;
@@ -297,49 +323,11 @@ main {
   cursor: pointer;
   border: 2px solid #010a13;
   text-decoration: none;
-}
-.end{
-  font-size: 2em;
-  display: flex;
-  justify-content: center;
-}
-.end__button {
   position: relative;
   font-size: 30px;
   line-height: 30px;
   margin-top: 50px;
 }
-.true{
-  font-size: 30px;
-  line-height: 30px;
-  padding: 12px 30px;
-  color: #FFF;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  cursor: pointer;
-  border: 2px solid #010a13;
-  z-index: 9999;
-  background-color: #2db32d;
-  display: flex;
-  justify-content: center;
-}
-.false{
-  font-size: 30px;
-  line-height: 30px;
-  padding: 12px 30px;
-  color: #FFF;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  cursor: pointer;
-  border: 2px solid #010a13;
-  z-index: 9999;
-  background-color: #fc4048;
-  display: flex;
-  justify-content: center;
-}
-
 .correct{
   background: #2db32d;  
 }
