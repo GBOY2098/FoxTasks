@@ -30,7 +30,6 @@ for(var i=1; i<5 ;i++){
 
 // for(var i=1; i<5 ;i++){ 
   const form1 =document.querySelector(".task__form"+String(1))
-  console.log(form1)
   form1.addEventListener('submit', function (event) {
     event.preventDefault()
     const answer = document.querySelector(".task__answer"+String(1))
