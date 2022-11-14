@@ -8,6 +8,10 @@
 {% endblock %}
 
 {% block body %}
+  <div class="container">
+  <h1 class="subtitles">
+    Не выполненные
+  </h1>
   {% if stats[0] == 0 %}
     <article class="work">
       <div class="work__description">
@@ -17,4 +21,5 @@
       <a class="work__button" href="/work">НАЧАТЬ РАБОТУ</a>
     </article>
   {% endif %}
+  </div>
 {% endblock %}
