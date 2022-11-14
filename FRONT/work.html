@@ -47,9 +47,9 @@
     </form>
   </article>
   {% endfor %}
-  <div class="end" >
-    <a class="end__button" href="/">Завершить</a>
-  </div>
+  <form class="end" method="POST" action="/">
+    <input name="end_work" value="Завершить работу" type="submit" class="end__button"></input>
+  </form>
   <br>
 </div>
 {% endblock %}

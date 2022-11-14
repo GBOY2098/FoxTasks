@@ -7,7 +7,7 @@ tasks = [{'photo': '/STATIC/Tasks/Picsart_22-11-10_19-58-45-176.jpg', 'id': 0, '
          {'photo': '/STATIC/Tasks/Picsart_22-11-10_20-01-03-923.jpg', 'id': 3, 'answer': 3 ,'last_answer': '', 'is_correct': None},]
 
 stats = {'completed': False, 
-         'started': True,
+         'started': False,
          'correct': 0, 
          'answers': len(tasks)}
 
@@ -28,8 +28,11 @@ def work():
         tasks[int(id)]['last_answer'] = answer
     return render_template('work.html', tasks=tasks)
 
-@app.route("/")
+@app.route("/", methods=['POST', 'GET'])
 def home():
+    if request.method == 'POST':
+        if list(request.form.keys())[0] == 'end_work':
+            stats['completed'] = True
     return render_template('index.html', stats=stats)
 
 
