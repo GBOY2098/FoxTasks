@@ -16,12 +16,12 @@
   <article class="work">
       <div class="work__description">
         <div class="work__type">Проверочная</div>
-        <div class="work__started">75%</div>
+        <div class="work__stats"></div>
         <div class="work__name">практика первых номеров ЕГЭ </div>
-        <div class="work__started">3/4 </div>
+        <div class="work__stats"></div>
       </div>
     <form class="work__form" method="POST" action="/work">
-      <button name="end_work" type="submit" class="work__button">Начать работу</button>
+      <button name="start_work" type="submit" class="work__button">Начать работу</button>
     </form>
   </article>
   {% endif %}
@@ -32,9 +32,9 @@
   <article class="work">
     <div class="work__description">
       <div class="work__type">Проверочная</div>
-      <div class="work__started">75%</div>
+      <div class="work__stats">Правильно {{ stats['correct'] }} из {{ stats['answers'] }}</div>
       <div class="work__name">практика первых номеров ЕГЭ </div>
-      <div class="work__started">3/4 </div>
+      <div class="work__stats">Это {{ (stats['correct'] * 100) // stats['answers'] }}%</div>
     </div>
     <a class="work__button" href="/work">ПРОДОЛЖИТЬ РАБОТУ</a>
   </article>
@@ -46,7 +46,9 @@
   <article class="work">
     <div class="work__description">
       <div class="work__type">Проверочная</div>
+      <div class="work__stats">Правильно {{ stats['correct'] }} из {{ stats['answers'] }}</div>
       <div class="work__name">практика первых номеров ЕГЭ </div>
+      <div class="work__stats">Это {{ (stats['correct'] * 100) // stats['answers'] }}%</div>
     </div>
   </article>
   {% endif %}

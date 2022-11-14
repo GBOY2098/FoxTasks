@@ -372,7 +372,7 @@ main {
   font-weight: 400;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
-  background-color: #350436;
+  background-color: #35043600;
   display: flex;
   justify-content: center;
   font-size: 30px;
@@ -380,9 +380,18 @@ main {
   padding: 12px 30px;
   color: #FFF;
   border-radius: 28px 28px 28px 28px;
+  text-decoration: none;
+  transition: all 280ms ease-in-out;
 }
 
-.work__started{
+.work__button:hover {
+  left: 0px;
+  color: #FFF;
+  transition: all 280ms ease-in-out;
+  transform: scale(1.1);
+}
+
+.work__stats{
   display: flex;
   justify-content: end;
   font-size: 25px;
