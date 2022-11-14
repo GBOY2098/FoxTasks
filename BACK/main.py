@@ -6,7 +6,7 @@ tasks = [{'photo': '/STATIC/Tasks/Picsart_22-11-10_19-58-45-176.jpg', 'id': 0, '
          {'photo': '/STATIC/Tasks/Picsart_22-11-10_20-00-36-549.jpg', 'id': 2, 'answer': 2 ,'last_answer': '', 'is_correct': None},
          {'photo': '/STATIC/Tasks/Picsart_22-11-10_20-01-03-923.jpg', 'id': 3, 'answer': 3 ,'last_answer': '', 'is_correct': None},]
 
-stats = {'completed': True, 
+stats = {'completed': False, 
          'started': True,
          'correct': 0, 
          'answers': len(tasks)}
