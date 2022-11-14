@@ -348,3 +348,8 @@ main {
   border-radius: 10px;
   padding-left: 5px;
 }
+.tag{
+  color: #FFF;
+  text-decoration: none;
+  
+}

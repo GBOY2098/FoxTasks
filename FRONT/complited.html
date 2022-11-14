@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% block title %}
-Главная
+Выполненые
 {% endblock %}
 
 {% block page_name %}
-Главная
+Выполненые
 {% endblock %}
 
 {% block body %}
-  {% if stats[0] == 0 %}
+  {% if stats[0] == 1 %}
     <article class="work">
       <div class="work__description">
         <div class="work__type">Проверочная</div>
         <div class="work__name">практика первых номеров ЕГЭ </div>
       </div>
-      <a class="work__button" href="/work">НАЧАТЬ РАБОТУ</a>
+      <a class="work__button" href="/work">Посмотреть ответы</a>
     </article>
   {% endif %}
 {% endblock %}
