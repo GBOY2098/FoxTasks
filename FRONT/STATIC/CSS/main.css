@@ -224,53 +224,6 @@ main {
 
 }
 
-.work {
-  margin-top: 50px;
-  position: relative;
-  background: #350436;
-  border: 2px solid #000000;
-  border-radius: 30px;
-  color: black;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed', Tahoma, sans-serif;
-
-}
-
-.work__description {
-  background-color: #fff;
-  position: relative;
-  border: 2px solid #000000;
-  border-radius: 28px;
-  font-weight: 500;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
-}
-
-.work__type {
-  font-size: 35px;
-  line-height: 35px;
-  padding: 12px 30px;
-}
-
-.work__name {
-  font-size: 25px;
-  line-height: 25px;
-  padding: 12px 30px;
-}
-
-.work__button {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 30px;
-  line-height: 30px;
-  padding: 12px 30px;
-  color: #FFF;
-  text-decoration: none;
-}
-
 .task {
   position: relative;
   border: 2.5px solid black;
@@ -373,6 +326,62 @@ main {
   margin-top: 75px;
   font-size: 3em;
 }
+
+.work {
+  margin-top: 50px;
+  position: relative;
+  background: #350436;
+  border: 2px solid #000000;
+  border-radius: 30px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
+
+}
+
+.work__description {
+  background-color: #fff;
+  position: relative;
+  border: 2px solid #000000;
+  border-radius: 28px;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.work__type {
+  font-size: 35px;
+  line-height: 35px;
+  padding: 12px 30px;
+}
+
+.work__name {
+  font-size: 25px;
+  line-height: 25px;
+  padding: 12px 30px;
+}
+
+.work__form{
+  background-color: #350436;
+  border-radius: 28px 28px 28px 28px;
+}
+.work__button {
+  width: 100%;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
+  background-color: #350436;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  color: #FFF;
+  border-radius: 28px 28px 28px 28px;
+}
+
 .work__started{
   display: flex;
   justify-content: end;

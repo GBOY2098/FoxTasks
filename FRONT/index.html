@@ -14,16 +14,14 @@
     Новые
   </h1>
   <article class="work">
-    <article class="work">
       <div class="work__description">
         <div class="work__type">Проверочная</div>
         <div class="work__started">75%</div>
         <div class="work__name">практика первых номеров ЕГЭ </div>
         <div class="work__started">3/4 </div>
       </div>
-    </article>
-    <form class="work__button" method="POST" action="/">
-      <input name="end_work" value="НАЧАТЬ РАБОТУ" type="submit" class="end__button"></input>
+    <form class="work__form" method="POST" action="/work">
+      <button name="end_work" type="submit" class="work__button">Начать работу</button>
     </form>
   </article>
   {% endif %}
