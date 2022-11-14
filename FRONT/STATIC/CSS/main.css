@@ -227,8 +227,6 @@ main {
 .work {
   margin-top: 50px;
   position: relative;
-  width: 90%;
-  left: 5%;
   background: #350436;
   border: 2px solid #000000;
   border-radius: 30px;
@@ -236,6 +234,7 @@ main {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
+  
 }
 .work__description{
   background-color: #fff;
@@ -352,4 +351,13 @@ main {
   color: #FFF;
   text-decoration: none;
   
+}
+
+.subtitles{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color :rgba(0, 0, 0, 0.568);
+  margin-top: 75px;
+  font-size: 3em;
 }
