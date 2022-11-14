@@ -200,7 +200,7 @@ main {
 }
 
 
-.page_name{
+.page_name {
   font-size: 4em;
   display: flex;
   align-items: center;
@@ -234,21 +234,24 @@ main {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
-  
+
 }
-.work__description{
+
+.work__description {
   background-color: #fff;
   position: relative;
   border: 2px solid #000000;
-  border-radius:28px;
+  border-radius: 28px;
   font-weight: 500;
 }
-.work__type{
+
+.work__type {
   font-size: 35px;
   line-height: 35px;
   padding: 12px 30px;
 }
-.work__name{
+
+.work__name {
   font-size: 25px;
   line-height: 25px;
   padding: 12px 30px;
@@ -265,7 +268,7 @@ main {
   text-decoration: none;
 }
 
-.task{
+.task {
   position: relative;
   border: 2.5px solid black;
   border-radius: 30px;
@@ -279,7 +282,7 @@ main {
   border-radius: 28px;
 }
 
-.form{
+.form {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -294,7 +297,7 @@ main {
   border-radius: 0px 0px 28px 28px;
 }
 
-.task__button{
+.task__button {
   font-size: 20px;
   line-height: 20px;
   padding: 12px 30px;
@@ -309,16 +312,17 @@ main {
   border-radius: 10px;
 }
 
-.task__button:hover{
+.task__button:hover {
   background-color: #c2c2c29a;
   transition: 150ms;
 }
 
-.end{
+.end {
   font-size: 2em;
   display: flex;
   justify-content: center;
 }
+
 .end__button {
   padding: 12px 30px;
   color: #FFF;
@@ -334,30 +338,35 @@ main {
   line-height: 30px;
   margin-top: 50px;
 }
-.correct{
-  background-color: #2db32d;  
+
+.correct {
+  background-color: #2db32d;
 }
-.incorrect{
-  background-color: #fc4048; 
+
+.incorrect {
+  background-color: #fc4048;
 }
-.undone{
+
+.undone {
   background-color: #a8de00;
 }
-.task__answer{
+
+.task__answer {
   border-radius: 10px;
   padding-left: 5px;
 }
-.tag{
+
+.tag {
   color: #FFF;
   text-decoration: none;
-  
+
 }
 
-.subtitles{
+.subtitles {
   position: relative;
   display: flex;
   justify-content: center;
-  color :rgba(0, 0, 0, 0.568);
+  color: rgba(0, 0, 0, 0.568);
   margin-top: 75px;
   font-size: 3em;
 }
