@@ -4,7 +4,7 @@ app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC
 tasks = [{'photo': '/STATIC/Tasks/Picsart_22-11-10_19-58-45-176.jpg', 'id': 0, 'answer': 'xwyz' ,'last_answer': '', 'is_correct': None},
          {'photo': '/STATIC/Tasks/Picsart_22-11-10_19-59-41-244.jpg', 'id': 1, 'answer': '36' ,'last_answer': '', 'is_correct': None},
          {'photo': '/STATIC/Tasks/Picsart_22-11-10_20-00-36-549.jpg', 'id': 2, 'answer': '46' ,'last_answer': '', 'is_correct': None},
-         {'photo': '/STATIC/Tasks/Picsart_22-11-10_20-01-03-923.jpg', 'id': 3, 'answer': 'yzwx' ,'last_answer': '', 'is_correct': None},},]
+         {'photo': '/STATIC/Tasks/Picsart_22-11-10_20-01-03-923.jpg', 'id': 3, 'answer': 'yzwx' ,'last_answer': '', 'is_correct': None},]
 
 stats = {'completed': False, 
          'started': False,
