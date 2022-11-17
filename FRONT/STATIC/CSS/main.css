@@ -8,14 +8,17 @@
 header {
   position: relative;
   width: 100%;
-  height: 10%;
-  background-color: #d3d3d3;
+  height: 70px;
+  background-color: #aaaaaa;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
 
+.body{
+  background-color: #d1d1d1;
+}
 
 #side-checkbox {
   display: none;
@@ -50,8 +53,6 @@ header {
   height: 75px;
   left: 0%;
   top: calc(50% - 75px/2);
-  background-color: #d3d3d3;
-  ;
 }
 
 .side-button-1 .side-b {
@@ -207,7 +208,7 @@ main {
 }
 
 
-.page_name{
+.page_name {
   font-size: 4em;
   display: flex;
   align-items: center;
@@ -273,7 +274,7 @@ main {
   text-decoration: none;
 }
 
-.task{
+.task {
   position: relative;
   border: 2.5px solid black;
   border-radius: 30px;
@@ -287,7 +288,7 @@ main {
   border-radius: 28px;
 }
 
-.form{
+.form {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -297,35 +298,43 @@ main {
   color: #FFF;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
   background: #350436;
   border-radius: 0px 0px 28px 28px;
 }
 
-.task__button{
+.task__button {
   font-size: 20px;
   line-height: 20px;
   padding: 12px 30px;
   color: #FFF;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  background: #525252;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
   cursor: pointer;
-  border: 2px solid #010a13;
+  border: 0px solid #010a13;
   text-decoration: none;
+  background-color: #c2c2c260;
+  border-radius: 10px;
 }
-.end{
+
+.task__button:hover {
+  background-color: #c2c2c29a;
+  transition: 150ms;
+}
+
+.end {
   font-size: 2em;
   display: flex;
   justify-content: center;
 }
+
 .end__button {
   padding: 12px 30px;
   color: #FFF;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
   background: #350436;
   cursor: pointer;
   border: 2px solid #010a13;
@@ -335,9 +344,108 @@ main {
   line-height: 30px;
   margin-top: 50px;
 }
-.correct{
-  background: #2db32d;  
+
+.correct {
+  background-color: #2db32d;
 }
-.uncorrect{
-  background: #fc4048; 
+
+.incorrect {
+  background-color: #fc4048;
+}
+
+.undone {
+  background-color: #a8de00;
+}
+
+.task__answer {
+  border-radius: 10px;
+  padding-left: 5px;
+}
+
+.tag {
+  color: #FFF;
+  text-decoration: none;
+
+}
+
+.subtitles {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.568);
+  margin-top: 75px;
+  font-size: 3em;
+}
+
+.work {
+  margin-top: 50px;
+  position: relative;
+  background: #350436;
+  border: 2px solid #000000;
+  border-radius: 30px;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
+
+}
+
+.work__description {
+  background-color: #fff;
+  position: relative;
+  border: 2px solid #000000;
+  border-radius: 28px;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+}
+
+.work__type {
+  font-size: 35px;
+  line-height: 35px;
+  padding: 12px 30px;
+}
+
+.work__name {
+  font-size: 25px;
+  line-height: 25px;
+  padding: 12px 30px;
+}
+
+.work__form{
+  background-color: #350436;
+  border-radius: 28px 28px 28px 28px;
+}
+.work__button {
+  width: 100%;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', Tahoma, sans-serif;
+  background-color: #35043600;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  color: #FFF;
+  border-radius: 28px 28px 28px 28px;
+  text-decoration: none;
+  transition: all 280ms ease-in-out;
+}
+
+.work__button:hover {
+  left: 0px;
+  color: #FFF;
+  transition: all 280ms ease-in-out;
+  transform: scale(1.1);
+}
+
+.work__stats{
+  display: flex;
+  justify-content: end;
+  font-size: 25px;
+  line-height: 25px;
+  padding: 12px 30px;
+  align-items: center;
 }

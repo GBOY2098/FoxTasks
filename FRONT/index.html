@@ -1,50 +1,57 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends 'base.html' %}
+{% block title %}
+Главная
+{% endblock %}
 
+{% block page_name %}
+Главная
+{% endblock %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="1.png" type="image/x-icon">
-  <link rel="stylesheet" href="CSS/zero.css">
-  <link rel="stylesheet" href="CSS/main.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
-  <title>MAIN</title>
-</head>
-
-<body>
-  <header>
-    <div class="side-button-1-wr">
-      <label class="side-button-1" for="side-checkbox">
-        <div class="side-b side-open">Меню</div>
-      </label>
-    </div>
-    <div class="page_name">
-      Главная
-    </div>
-  </header>
-  <main>
-    <input type="checkbox" id="side-checkbox" />
-    <div class="side-panel">
-      <label class="side-button-2" for="side-checkbox">+</label>
-      <div class="side-title">Меню:</div>
-      <p>Аккаунт</p>
-      <p>Главная</p>
-      <p>Еще что-то</p>
-    </div>
-    <div class="container">
-    <article class="work">
+{% block body %}
+<div class="container">
+  {% if not stats['completed'] and not stats['started'] %}
+  <h1 class="subtitles">
+    Новые
+  </h1>
+  <article class="work">
       <div class="work__description">
         <div class="work__type">Проверочная</div>
+        <div class="work__stats"></div>
         <div class="work__name">практика первых номеров ЕГЭ </div>
+        <div class="work__stats"></div>
       </div>
-      <a class="work__button" href="work.html">НАЧАТЬ РАБОТУ</a>
-    </article>
-  </div>
-  </main>
-</body>
+    <form class="work__form" method="POST" action="/work">
+      <button name="start_work" type="submit" class="work__button">Начать работу</button>
+    </form>
+  </article>
+  {% endif %}
+  {% if not stats['completed'] and stats['started'] %}
+  <h1 class="subtitles">
+    Начатые
+  </h1>
+  <article class="work">
+    <div class="work__description">
+      <div class="work__type">Проверочная</div>
+      <div class="work__stats">Правильно {{ stats['correct'] }} из {{ stats['answers'] }}</div>
+      <div class="work__name">практика первых номеров ЕГЭ </div>
+      <div class="work__stats">Это {{ (stats['correct'] * 100) // stats['answers'] }}%</div>
+    </div>
+    <a class="work__button" href="/work">ПРОДОЛЖИТЬ РАБОТУ</a>
+  </article>
+  {% endif %}
+  {% if stats['completed'] %}
+  <h1 class="subtitles">
+    Отправленные
+  </h1>
+  <article class="work">
+    <div class="work__description">
+      <div class="work__type">Проверочная</div>
+      <div class="work__stats">Правильно {{ stats['correct'] }} из {{ stats['answers'] }}</div>
+      <div class="work__name">практика первых номеров ЕГЭ </div>
+      <div class="work__stats">Это {{ (stats['correct'] * 100) // stats['answers'] }}%</div>
+    </div>
+  </article>
+  {% endif %}
+</div>
 
-</html>
+{% endblock %}
