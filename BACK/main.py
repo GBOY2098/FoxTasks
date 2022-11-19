@@ -3,9 +3,11 @@ from configparser import ConfigParser
 import sqlalchemy
 import os.path
 
+
 works=[{'type': 1,'name': 'практика первых номеров ЕГЭ 1','id': 1},
 {'type': 2,'name': 'практика первых номеров ЕГЭ 2','id': 2},
 {'type': 3,'name': 'практика первых номеров ЕГЭ 3','id': 3}]
+
 
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
 
