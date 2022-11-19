@@ -31,10 +31,8 @@
     <div class="side-panel">
       <label class="side-button-2" for="side-checkbox">+</label>
       <div class="side-title">Меню:</div>
-      <p>Аккаунт</p>
-      <p><a class="tag" href="/">Главная</a></p>
+      {% block menu_body %}{% endblock %}
     </div>
-
   </main>
   {% block body %}{% endblock %}
 </body>
