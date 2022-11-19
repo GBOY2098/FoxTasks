@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Главная
+{% endblock %}
+
+{% block page_name %}
+Главная
+{% endblock %}
+{% block menu_body %}
+  <p><a class="tag" href="/teacher_7">7 класс</a></p>
+{% endblock %}
+{% block body %}
+<div class="container">
+  <form method="post" >
+    {% for work in works %}
+    <article class="work">
+      <div class="work__description">
+        <div class="work__type">{{ work['type'] }}</div>
+        <div class="work__name">{{ work['name'] }} </div>
+        <div class="work__radio">
+          <input class="work__input" type="radio" name="work" id="{{work["id"]}}">
+          <label for="{{work["id"]}}" class="radio__lable">Выбрать </label>
+        </div>
+      </div>
+  </article>
+  {% endfor %}
+  <div class="end">
+    <button name="send_work" type="submit" class="end__button">отправить </button>
+    <button name="stats_work" type="submit" class="end__button">результаты</button>
+    <button name="edit_work" type="submit" class="end__button">редактировать</button>
+    <button name="create_work" type="submit" class="end__button">создать</button>
+  </div>
+  </form>
+</div>
+
+{% endblock %}

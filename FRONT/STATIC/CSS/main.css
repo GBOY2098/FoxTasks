@@ -1,10 +1,10 @@
-:root{
-  --gray:#878787;
+:root {
+  --gray: #878787;
   --purple: #350436;
-  --green:#2db32d;
-  --red:#fc4048;
-
+  --green: #2db32d;
+  --red: #fc4048;
 }
+
 header {
   position: relative;
   width: 100%;
@@ -16,7 +16,7 @@ header {
   align-content: center;
 }
 
-.body{
+.body {
   background-color: #d1d1d1;
 }
 
@@ -245,19 +245,22 @@ main {
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
 }
-.work__description{
+
+.work__description {
   background-color: #fff;
   position: relative;
   border: 2px solid #000000;
-  border-radius:28px;
+  border-radius: 28px;
   font-weight: 500;
 }
-.work__type{
+
+.work__type {
   font-size: 35px;
   line-height: 35px;
   padding: 12px 30px;
 }
-.work__name{
+
+.work__name {
   font-size: 25px;
   line-height: 25px;
   padding: 12px 30px;
@@ -326,7 +329,7 @@ main {
 .end {
   font-size: 2em;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .end__button {
@@ -399,24 +402,59 @@ main {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
+  grid-template-areas:
+    "work__type work__radio"
+    "work__name work__radio";
+}
+
+.work__input {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.radio__lable {
+  background: #350436;
+  color:  #FFF;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  border: 2px solid #000000;
+}
+.work__input:checked + .radio__lable{
+  background: #c4c4c4;
+  color:  #000000;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 12px 30px;
+  border: 2px solid #000000;
 }
 
 .work__type {
+  grid-area: work__type;
   font-size: 35px;
   line-height: 35px;
   padding: 12px 30px;
 }
 
+.work__radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: work__radio;
+}
+
 .work__name {
+  grid-area: work__name;
   font-size: 25px;
   line-height: 25px;
   padding: 12px 30px;
 }
 
-.work__form{
+.work__form {
   background-color: #350436;
   border-radius: 28px 28px 28px 28px;
 }
+
 .work__button {
   width: 100%;
   font-weight: 400;
@@ -441,7 +479,7 @@ main {
   transform: scale(1.1);
 }
 
-.work__stats{
+.work__stats {
   display: flex;
   justify-content: end;
   font-size: 25px;
