@@ -7,7 +7,10 @@
 {% block page_name %}
 Выполнение работы
 {% endblock %}
-
+{% block menu_body %}
+  <p>Аккаунт</p>
+  <p><a class="tag" href="/">Главная</a></p>
+{% endblock %}
 {% block body %}
 <div class="container">
   {% for task in tasks %}
