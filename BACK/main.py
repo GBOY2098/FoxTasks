@@ -4,10 +4,18 @@ import sqlalchemy
 import os.path
 
 
-works=[{'type': 1,'name': 'практика первых номеров ЕГЭ 1','id': 1},
-{'type': 2,'name': 'практика первых номеров ЕГЭ 2','id': 2},
-{'type': 3,'name': 'практика первых номеров ЕГЭ 3','id': 3}]
+works=[
+{'class': 7, 'type': 1,'name': 'задание для малолеьних клоунов','id': 1},
+{'class': 8, 'type': 2,'name': 'задание для малолеьних клоунов','id': 2},
+{'class': 9, 'type': 1,'name': 'практика первых номеров ОГЭ 3','id': 3},
+{'class': 10, 'type': 2,'name': 'задачки чтобы почилить после ОГЭ','id': 4},
+{'class': 11, 'type': 3,'name': 'практика первых номеров ЕГЭ 1','id': 5}]
 
+works_7 =[x for x in works if x['class']==7]
+works_8 =[x for x in works if x['class']==8]
+works_9 =[x for x in works if x['class']==9]
+works_10 =[x for x in works if x['class']==10]
+works_11 =[x for x in works if x['class']==11]
 
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
 
@@ -38,9 +46,21 @@ def home():
             stats['completed'] = True
     return render_template('index.html', stats=stats)
 
-@app.route("/teacher", methods=['POST', 'GET'])
-def techer_home():
-    return render_template('teacher.html', works=works)
+@app.route("/teacher_7", methods=['POST', 'GET'])
+def techer_7():
+    return render_template('teacher_7.html', works=works_7)
+@app.route("/teacher_8", methods=['POST', 'GET'])
+def techer_8():
+    return render_template('teacher_8.html', works=works_8)
+@app.route("/teacher_9", methods=['POST', 'GET'])
+def techer_9():
+    return render_template('teacher_9.html', works=works_9)
+@app.route("/teacher_10", methods=['POST', 'GET'])
+def techer_10():
+    return render_template('teacher_10.html', works=works_10)
+@app.route("/teacher_11", methods=['POST', 'GET'])
+def techer_11():
+    return render_template('teacher_11.html', works=works_11)
 
 if __name__ == '__main__':
     conf = ConfigParser()
