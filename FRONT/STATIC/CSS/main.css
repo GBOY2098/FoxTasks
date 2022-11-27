@@ -502,3 +502,63 @@ main {
   font-size: 30px;
   line-height: 30px;
 }
+
+.work__settings{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  top: 50px;
+  background-color: #f2e9e4;
+  font-size: 24px;
+  
+}
+
+.work__settings__name {
+  border-radius: 7px;
+  border: 2px solid #000000;
+  padding: 5px;
+  background-color: #f2e9e4 ;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  
+}
+
+.work__grade__select{
+  background-color: #f2e9e4 ;
+  padding-left: 10px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  
+}
+
+.work__type__select{  
+  background-color: #f2e9e4 ;
+  padding-left: 5px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  width: 305px;
+}
+
+.work__settings__titles{
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  top: 100px;
+  font-size: 30px;
+}
+
+.work__settings__task__adding{
+  position: relative;
+  top: 100px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+
+.work__settings__answer__adding{
+  padding-left: 5px;
+  background-color: #f2e9e4;
+  border: #000000 solid 2px;
+}
