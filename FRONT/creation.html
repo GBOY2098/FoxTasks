@@ -23,7 +23,6 @@
             </label>
         </div>
         <div class="page_name">
-
         </div>
     </header>
     <main>
@@ -31,53 +30,42 @@
         <div class="side-panel">
             <label class="side-button-2" for="side-checkbox">+</label>
             <div class="side-title">Меню:</div>
-
         </div>
-    </main>
-
-
-    <form class="container" method="post">
-        <div class="work__settings">
-            <input class="work__settings__name"  placeholder="Введите название работы" required size= 30 type="text">
-            <select class="work__grade__select" name="Класс" id="work__grade__select">
-                <option value="7grade">7 класс</option>
-                <option value="8grade">8 класс</option>
-                <option value="9grade">9 класс</option>
-                <option value="10grade" >10 класс</option>
-                <option value="11grade" selected>11 класс</option>
-            </select>
-            <select class="work__type__select" name="Вид работы" id="work__type__select">
-                
-                <option value="practise" >Практическая работа</option>
-                <option value="test" selected >Самостоятельная работа</option>
-                <option value="exam">Контрольная работа</option>
-            </select>
-        </div>
-        <div class="work__settings__titles">
-            <div class="work__settings__title1">
+        <div class="container">
+            <form method="post" class="work__settings">
+                <input class="work__settings__name" placeholder="Введите название работы" required size=30 type="text">
+                <select class="work__grade__select" name="Класс" id="work__grade__select">
+                    <option value="7grade">7 класс</option>
+                    <option value="8grade">8 класс</option>
+                    <option value="9grade">9 класс</option>
+                    <option value="10grade">10 класс</option>
+                    <option value="11grade" selected>11 класс</option>
+                </select>
+                <select class="work__type__select" name="Вид работы" id="work__type__select">
+                    <option value="practise">Практическая работа</option>
+                    <option value="test" selected>Самостоятельная работа</option>
+                    <option value="exam">Контрольная работа</option>
+                </select>
+            </form>
+            <div class="con">
+            <div class="work__settings__titles">
                 <p>Задания:</p>
-            </div>
-
-            <div class="work__settings__title2">
                 <p>Ответы:</p>
             </div>
-        </div>
-        
-        <div class="work__settings__task__adding">
-            <form class="work__settings__task__adding" method="post">
+            <form class="work__settings__task__adding" id="1" method="post">
                 <input class="work__settings__file__adding" type="file" accept="image/*">
-                <input class="work__settings__answer__adding" type="text" placeholder="Предполагаемый ответ" name="" id="">
+                <input class="work__settings__answer__adding" type="text" placeholder="Предполагаемый ответ" name=""id="">
             </form>
-        </div>    
-        
-        
-        
-    </form>
-    
-
-
-
-
+            </div>
+            <form action="get" class="add__work">
+                <input type="submit" value="Добавить">
+            </form>
+            <form action="get" class="delete__work">
+                <input type="submit" value="Удалить">
+            </form>
+        </div>
+    </main>
 </body>
+<script src="./STATIC/js/script.js"></script>
 
 </html>

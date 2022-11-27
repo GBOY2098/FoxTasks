@@ -504,13 +504,11 @@ main {
 }
 
 .work__settings{
-  position: relative;
+  margin-top: 50px;
   display: flex;
-  justify-content: space-between;
-  top: 50px;
+  justify-content: space-around;
   background-color: #f2e9e4;
   font-size: 24px;
-  
 }
 
 .work__settings__name {
@@ -536,20 +534,19 @@ main {
   padding-left: 5px;
   border: 2px solid #000000;
   border-radius: 5px;
-  width: 305px;
 }
 
 .work__settings__titles{
+  margin-top: 50px;
   position: relative;
   display: flex;
   justify-content: space-around;
-  top: 100px;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .work__settings__task__adding{
+  margin-top: 25px;
   position: relative;
-  top: 100px;
   display: flex;
   justify-content: space-around;
   font-size: 20px;
