@@ -559,3 +559,19 @@ main {
   background-color: #f2e9e4;
   border: #000000 solid 2px;
 }
+
+.add__work{
+  
+  display: block;
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.delete__work{
+  
+  display: block;
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: sans-serif;
+}
