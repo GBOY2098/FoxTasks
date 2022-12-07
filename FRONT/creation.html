@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="1.png" type="image/x-icon">
+    <link rel="stylesheet" href="STATIC/CSS/zero.css">
+    <link rel="stylesheet" href="STATIC/CSS/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="icon" href="./STATIC/Icons/favicon.ico">
+    <title>Создать работу</title>
+</head>
+
+<body class="body">
+    <header>
+        <div class="side-button-1-wr">
+            <label class="side-button-1" for="side-checkbox">
+                <div class="side-b side-open">Меню</div>
+            </label>
+        </div>
+        <div class="page_name">
+        </div>
+    </header>
+    <main>
+        <input type="checkbox" id="side-checkbox" />
+        <div class="side-panel">
+            <label class="side-button-2" for="side-checkbox">+</label>
+            <div class="side-title">Меню:</div>
+        </div>
+        <div class="container">
+            <form method="post" class="work__settings">
+                <input class="work__settings__name" placeholder="Введите название работы" required size=30 type="text">
+                <select class="work__grade__select" name="Класс" id="work__grade__select">
+                    <option value="7grade">7 класс</option>
+                    <option value="8grade">8 класс</option>
+                    <option value="9grade">9 класс</option>
+                    <option value="10grade">10 класс</option>
+                    <option value="11grade" selected>11 класс</option>
+                </select>
+                <select class="work__type__select" name="Вид работы" id="work__type__select">
+                    <option value="practise">Практическая работа</option>
+                    <option value="test" selected>Самостоятельная работа</option>
+                    <option value="exam">Контрольная работа</option>
+                </select>
+            </form>
+            <div class="con">
+            <div class="work__settings__titles">
+                <p>Задания:</p>
+                <p>Ответы:</p>
+            </div>
+            <form class="work__settings__task__adding" id="1" method="post">
+                <input class="work__settings__file__adding" type="file" accept="image/*">
+                <input class="work__settings__answer__adding" type="text" placeholder="Предполагаемый ответ" name=""id="">
+            </form>
+            </div>
+            <form action="get" class="add__work">
+                <input type="submit" value="Добавить">
+            </form>
+            <form action="get" class="delete__work">
+                <input type="submit" value="Удалить" >
+            </form>
+        </div>
+    </main>
+</body>
+<script src="./STATIC/js/script.js"></script>
+
+</html>

@@ -7,8 +7,8 @@
 Главная
 {% endblock %}
 {% block menu_body %}
-  <p>Аккаунт</p>
-  <p><a class="tag" href="/">Главная</a></p>
+<p class="tag">Аккаунт</p>
+<p><a class="tag" href="/">Главная</a></p>
 {% endblock %}
 {% block body %}
 <div class="container">
@@ -17,12 +17,12 @@
     Новые
   </h1>
   <article class="work">
-      <div class="work__description">
-        <div class="work__type">Проверочная</div>
-        <div class="work__stats"></div>
-        <div class="work__name">практика первых номеров ЕГЭ </div>
-        <div class="work__stats"></div>
-      </div>
+    <div class="work__description">
+      <div class="work__type">Проверочная</div>
+      <div class="work__stats"></div>
+      <div class="work__name">практика первых номеров ЕГЭ </div>
+      <div class="work__stats"></div>
+    </div>
     <form class="work__form" method="POST" action="/work">
       <button name="start_work" type="submit" class="work__button">Начать работу</button>
     </form>

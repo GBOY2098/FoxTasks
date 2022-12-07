@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+Главная
+{% endblock %}
+
+{% block page_name %}
+Главная
+{% endblock %}
+{% block menu_body %}
+<p><a class="tag" href="/teacher_7">7 класс</a></p>
+<p><a class="tag" href="/teacher_8">8 класс</a></p>
+<p><a class="tag" href="/teacher_9">9 класс</a></p>
+<p><a class="tag" href="/teacher_10">10 класс</a></p>
+<p><a class="tag" href="/teacher_11">11 класс</a></p>
+<p><a class="tag" href="/creation">Создать работу</a></p>
+{% endblock %}
+{% block body %}
+<div class="container">
+
+  {% for work in works %}
+  <article class="work">
+    <div class="work__description">
+      <div class="work__type">{{ work['type'] }}</div>
+      <div class="work__name">{{ work['name'] }} </div>
+      <form class="work__menu" method="post">
+        <button name="edit_work" type="submit" class="work__edit"> </button>
+        <button name="stat_work" type="submit" class="work__stat"> </button>
+        <button name="send_work" type="submit" class="work__send"> </button>
+      </form>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
+{% endblock %}
