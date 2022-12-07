@@ -38,10 +38,11 @@
                       </tr>
                     </thead>
                     <tbody>
+                      {% for student in students %}
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
+                        <th scope="row">{{ student['num']}}</th>
+                        <td>{{ student['name']}}</td>
+                        <td>{{ student['surname']}}</td>
                         <td>
                             <form>
                                 <label>
@@ -50,114 +51,7 @@
                               </form>
                         </td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">7</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">8</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">9</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">10</th>
-                        <td>Имя</td>
-                        <td>Фамилия</td>
-                        <td>
-                            <form>
-                                <label>
-                                  <input type="checkbox" class ='checkbox-style'>
-                                </label>
-                              </form>
-                        </td>
-                      </tr>
+                      {% endfor %} 
                     </tbody>
                   </table>
         </header>
