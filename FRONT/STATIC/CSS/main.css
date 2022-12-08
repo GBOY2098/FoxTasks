@@ -592,16 +592,16 @@ main {
 
 .login__input{
   margin-top: 20px;
-  color: #A9A9A9;
+  background-color: #f2e9e4;
   padding-left: 5px;
   font-size: 25px;
+  border: 2px #A9A9A9 solid;
 }
 
 .login__button{
   font-size: 25px;
   margin-top: 15px;
-  border: 2px solid #87CEEB;
   background-color: #87CEEB;
   border-radius: 5px;
-  padding-inline: 5px;
+  padding-inline: 7px;
 }
