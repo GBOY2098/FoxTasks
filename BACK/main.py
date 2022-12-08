@@ -66,12 +66,18 @@ def techer_10():
 def techer_11():
     return render_template('teacher_11.html', works=works_11)
 
+@app.route("/creation", methods=['POST', 'GET'])
+def creation():
+    return render_template('creation.html', )
+
 @app.route("/ckeckb", methods=['POST', 'GET'])
 def ckeckb():
     return render_template('ckeckb.html', students=students)
+
 @app.route("/rezults", methods=['POST', 'GET'])
 def rezults():
     return render_template('rezults.html', students=students)
+
 if __name__ == '__main__':
     # conf = ConfigParser()
     # if not os.path.isfile('db.ini'):
