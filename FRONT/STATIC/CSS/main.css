@@ -585,20 +585,24 @@ main {
   background-color: #f2e9e4;
   justify-content: center;
 }
-.login_form{
+.login__form{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.login_title{
-  /* display: flex;
-  justify-content: space-around; */
+.login__input{
+  margin-top: 20px;
+  background-color: #f2e9e4;
+  padding-left: 5px;
+  font-size: 25px;
+  border: 2px #A9A9A9 solid;
 }
 
-.login_input{
-  margin-top: 20px;
-  color: #A9A9A9;
-  padding-left: 5px;
-  font-size: 20px;
+.login__button{
+  font-size: 25px;
+  margin-top: 15px;
+  background-color: #87CEEB;
+  border-radius: 5px;
+  padding-inline: 7px;
 }
