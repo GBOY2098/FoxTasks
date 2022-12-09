@@ -436,7 +436,12 @@ main {
   background: url("../Icons/send.svg") no-repeat;
   background-size: 30px 30px;
 }
-
+.work__delete{
+  width: 60px;
+  height: 30px;
+  background: url("../Icons/trash.svg") no-repeat;
+  background-size: 30px 30px;
+}
 
 .work__name {
   grid-area: work__name;
