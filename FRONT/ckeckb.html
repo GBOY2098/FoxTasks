@@ -44,19 +44,19 @@
                         <td>{{ student['name']}}</td>
                         <td>{{ student['surname']}}</td>
                         <td>
-                            <form>
+                            <div>
                                 <label>
-                                  <input type="checkbox" class ='checkbox-style'>
+                                  <input form="form" name="{{student['num']}}" type="checkbox" class ='checkbox-style'>
                                 </label>
-                              </form>
+                              </div>
                         </td>
                       </tr>
                       {% endfor %} 
                     </tbody>
                   </table>
         </header>
-        <form><div>
-            <button class='btn btn-secondary rounded-5 auditory-back-r'>Отправить</button>
+        <form method="post" id="form"> <div>
+            <input name="send_work"  type="submit" value="Отправить" class='btn btn-secondary rounded-5 auditory-back-r'>
           </div>
         </form>
       <script type="text/javascript">

@@ -68,6 +68,8 @@ def creation():
         if list(request.form.keys())[-1]=='create_work':
             print(request.form)
             grade=int(request.form["grade"])
+            file = request.files['image']
+            
         if post == '7grade':
             grade=7
         elif post == '8grade':
@@ -84,6 +86,12 @@ def creation():
 
 @app.route("/ckeckb", methods=['POST', 'GET'])
 def ckeckb():
+    if request.method == 'POST':
+        post = list(request.form.keys())[0]
+        if list(request.form.keys())[-1]=='send_work':
+            selected=list(request.form.keys())[:-1:]
+            print(selected)
+        return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('ckeckb.html', students=students)
 
 @app.route("/rezults", methods=['POST', 'GET'])
