@@ -1,22 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from configparser import ConfigParser
 import sqlalchemy
 import os.path
 
-
-works=[
+works_not_sorted=[
 {'class': 7, 'type': 1,'name': 'задание для малолеьних клоунов','id': 1},
 {'class': 8, 'type': 2,'name': 'задание для малолеьних клоунов','id': 2},
 {'class': 9, 'type': 1,'name': 'практика первых номеров ОГЭ 3','id': 3},
 {'class': 10, 'type': 2,'name': 'задачки чтобы почилить после ОГЭ','id': 4},
 {'class': 11, 'type': 3,'name': 'практика первых номеров ЕГЭ 1','id': 5}]
+grade=7
+works =[x for x in works_not_sorted if x['class']==grade]
 
-works_7 =[x for x in works if x['class']==7]
-works_8 =[x for x in works if x['class']==8]
-works_9 =[x for x in works if x['class']==9]
-works_10 =[x for x in works if x['class']==10]
-works_11 =[x for x in works if x['class']==11]
 students=[{'num': i+1, 'name': 'Имя', 'surname': 'Фамилия', 'result': str(75)+'%'} for i in range(10)]
+
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
 
 
@@ -37,8 +34,6 @@ app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC
 #                 tasks[int(post)]['is_correct'] = 0
 #             tasks[int(post)]['last_answer'] = answer
 #     return render_template('work.html', tasks=tasks)
-
-
 # @app.route("/", methods=['POST', 'GET'])
 # def home():
 #     if request.method == 'POST':
@@ -46,28 +41,45 @@ app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC
 #             stats['completed'] = True
 #     return render_template('index.html', stats=stats)
 
-@app.route("/teacher_7", methods=['POST', 'GET'])
-def techer_7():
-    return render_template('teacher_7.html', works=works_7)
-
-@app.route("/teacher_8", methods=['POST', 'GET'])
-def techer_8():
-    return render_template('teacher_8.html', works=works_8)
-
-@app.route("/teacher_9", methods=['POST', 'GET'])
-def techer_9():
-    return render_template('teacher_9.html', works=works_9)
-
-@app.route("/teacher_10", methods=['POST', 'GET'])
-def techer_10():
-    return render_template('teacher_10.html', works=works_10)
-
-@app.route("/teacher_11", methods=['POST', 'GET'])
-def techer_11():
-    return render_template('teacher_11.html', works=works_11)
+@app.route("/teacher", methods=['POST', 'GET'])
+def techer():
+    
+    global grade
+    if request.method == 'POST':
+        post = list(request.form.keys())[0]
+        if post == '7grade':
+            grade=7
+        elif post == '8grade':
+            grade=8
+        elif post == '9grade':
+            grade=9
+        elif post == '10grade':
+            grade=10
+        elif post == '11grade':
+            grade=11
+    works =[x for x in works_not_sorted if x['class']==grade]
+    return render_template('teacher.html', works=works)
 
 @app.route("/creation", methods=['POST', 'GET'])
 def creation():
+    global grade
+    if request.method == 'POST':
+        post = list(request.form.keys())[0]
+        if list(request.form.keys())[-1]=='create_work':
+            print(request.form)
+            grade=int(request.form["grade"])
+        if post == '7grade':
+            grade=7
+        elif post == '8grade':
+            grade=8
+        elif post == '9grade':
+            grade=9
+        elif post == '10grade':
+            grade=10
+        elif post == '11grade':
+            grade=11
+        works =[x for x in works_not_sorted if x['class']==grade]
+        return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('creation.html', )
 
 @app.route("/ckeckb", methods=['POST', 'GET'])

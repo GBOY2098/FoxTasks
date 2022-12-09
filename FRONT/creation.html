@@ -7,51 +7,61 @@
 Создать работу
 {% endblock %}
 {% block menu_body %}
-<p><a class="tag" href="/teacher_7">7 класс</a></p>
-<p><a class="tag" href="/teacher_8">8 класс</a></p>
-<p><a class="tag" href="/teacher_9">9 класс</a></p>
-<p><a class="tag" href="/teacher_10">10 класс</a></p>
-<p><a class="tag" href="/teacher_11">11 класс</a></p>
-<p><a class="tag" href="/creation">Создать работу</a></p>
+<form method="post">
+    <p><input class="tag" name="7grade" type="submit" value="7 класс">
+    <p>
+    <p><input class="tag" name="8grade" type="submit" value="8 класс">
+    <p>
+    <p><input class="tag" name="9grade" type="submit" value="9 класс">
+    <p>
+    <p><input class="tag" name="10grade" type="submit" value="10 класс">
+    <p>
+    <p><input class="tag" name="11grade" type="submit" value="11 класс"></p>
+    <p><a class="tag" href="/creation">Создать работу</a>
+    <p>
+</form>
 {% endblock %}
 {% block body %}
 <div class="container">
-    <form method="post" class="work__settings">
-        <input class="work__settings__name" placeholder="Введите название работы" required size=30 type="text">
-        <select class="work__grade__select" name="Класс" id="work__grade__select">
-            <option value="7grade">7 класс</option>
-            <option value="8grade">8 класс</option>
-            <option value="9grade">9 класс</option>
-            <option value="10grade">10 класс</option>
-            <option value="11grade" selected>11 класс</option>
+    <form  id="for" method="post" >
+        <div class="work__settings">
+        <input name="name" class="work__settings__name" placeholder="Введите название работы" required size=30
+            type="text">
+        <select class="work__grade__select" name="grade">
+            <option value="7">7 класс</option>
+            <option value="8">8 класс</option>
+            <option value="9">9 класс</option>
+            <option value="10">10 класс</option>
+            <option value="11" selected>11 класс</option>
         </select>
-        <select class="work__type__select" name="Вид работы" id="work__type__select">
+        <select class="work__type__select" name="type">
             <option value="practise">Практическая работа</option>
             <option value="test" selected>Самостоятельная работа</option>
             <option value="exam">Контрольная работа</option>
         </select>
-    </form>
+        </div>
         <div class="work__settings__titles">
             <p>Задания:</p>
             <p>Ответы:</p>
         </div>
-    <div class="con">
-        <form class="work__settings__task__adding" id="1" method="post">
-            <input class="work__settings__file__adding" type="file" accept="image/*">
-            <input class="work__settings__answer__adding" type="text" placeholder="Предполагаемый ответ" name="" id="">
-        </form>
-    </div>
+        <div class="con">
+            <div class="work__settings__task__adding">
+                <input  name="image0" class="work__settings__file__adding" type="file" required accept="image/*">
+                <input  name="answer0" class="work__settings__answer__adding" required type="text"
+                    placeholder="Предполагаемый ответ">
+            </div>
+        </div>
+    </form>
     <form action="get" class="add__work">
         <input type="submit" value="Добавить">
     </form>
     <form action="get" class="delete__work">
         <input type="submit" value="Удалить">
     </form>
-</div>
-<form class="create" method="POST" action="/">
-    <input name="create_work" value="СОЗДАТЬ" type="submit" class="create__button"></input>
-</form>
-{% endblock %}
-{% block code %}
-<script src="./STATIC/js/script.js"></script>
-{% endblock %}
+    <div class="create">
+        <input form="for" name="create_work" value="СОЗДАТЬ" type="submit" class="create__button"></input>
+    </div>
+    {% endblock %}
+    {% block code %}
+    <script src="./STATIC/js/script.js"></script>
+    {% endblock %}

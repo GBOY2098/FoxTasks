@@ -7,12 +7,14 @@
 Главная
 {% endblock %}
 {% block menu_body %}
-<p><a class="tag" href="/teacher_7">7 класс</a></p>
-<p><a class="tag" href="/teacher_8">8 класс</a></p>
-<p><a class="tag" href="/teacher_9">9 класс</a></p>
-<p><a class="tag" href="/teacher_10">10 класс</a></p>
-<p><a class="tag" href="/teacher_11">11 класс</a></p>
-<p><a class="tag" href="/creation">Создать работу</a></p>
+<form method="post">
+  <p><input class="tag" name="7grade" type="submit" value="7 класс"><p>
+  <p><input class="tag" name="8grade" type="submit" value="8 класс"><p>
+  <p><input class="tag" name="9grade" type="submit" value="9 класс"><p>
+  <p><input class="tag" name="10grade" type="submit" value="10 класс"><p>
+  <p><input class="tag" name="11grade" type="submit" value="11 класс"></p>
+  <p><a class="tag" href="/creation">Создать работу</a><p>
+</form>
 {% endblock %}
 {% block body %}
 <div class="container">
