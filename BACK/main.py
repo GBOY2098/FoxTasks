@@ -34,13 +34,19 @@ app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC
 #                 tasks[int(post)]['is_correct'] = 0
 #             tasks[int(post)]['last_answer'] = answer
 #     return render_template('work.html', tasks=tasks)
-# @app.route("/", methods=['POST', 'GET'])
+@app.route("/", methods=['POST', 'GET'])
+def home():
+    if request.method == 'POST':
+        post = list(request.form.keys())[2]
+        if post=="enter" and request.form["log"]=="teacher" and request.form["pas"]=="1234":
+            return redirect("http://127.0.0.1:5000/teacher", code=302)
+    return render_template('Login.html', )
+@app.route("/menu", methods=['POST', 'GET'])
 # def home():
 #     if request.method == 'POST':
 #         if list(request.form.keys())[0] == 'end_work':
 #             stats['completed'] = True
 #     return render_template('index.html', stats=stats)
-
 @app.route("/teacher", methods=['POST', 'GET'])
 def techer():
     global works_not_sorted
@@ -53,7 +59,7 @@ def techer():
             return redirect("http://127.0.0.1:5000/rezults", code=302)
         elif post[-1]=="2":
             id=post[:-1:]
-            return redirect("http://127.0.0.1:5000/ckeckb", code=302)
+            return redirect("http://127.0.0.1:5000/send", code=302)
         elif post[-1]=="3":
             for i in range(len(works_not_sorted)):
                 if works_not_sorted[i]["id"]==int(post[:-1:]):
@@ -80,8 +86,8 @@ def creation():
         if list(request.form.keys())[-1]=='create_work':
             print(request.form)
             grade=int(request.form["grade"])
-            file = request.files['image']
-            return file
+            file = request.files["file"]
+            print(file)
         if post == '7grade':
             grade=7
         elif post == '8grade':
@@ -96,15 +102,15 @@ def creation():
         return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('creation.html', )
 
-@app.route("/ckeckb", methods=['POST', 'GET'])
-def ckeckb():
+@app.route("/send", methods=['POST', 'GET'])
+def send():
     if request.method == 'POST':
         post = list(request.form.keys())[0]
         if list(request.form.keys())[-1]=='send_work':
             selected=list(request.form.keys())[:-1:]
             print(selected)
         return redirect("http://127.0.0.1:5000/teacher", code=302)
-    return render_template('ckeckb.html', students=students)
+    return render_template('send.html', students=students)
 
 @app.route("/rezults", methods=['POST', 'GET'])
 def rezults():
