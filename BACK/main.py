@@ -43,10 +43,22 @@ app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC
 
 @app.route("/teacher", methods=['POST', 'GET'])
 def techer():
-    
+    global works_not_sorted
     global grade
+    global id
     if request.method == 'POST':
         post = list(request.form.keys())[0]
+        if post[-1]=="1" :
+            id=post[:-1:]
+            return redirect("http://127.0.0.1:5000/rezults", code=302)
+        elif post[-1]=="2":
+            id=post[:-1:]
+            return redirect("http://127.0.0.1:5000/ckeckb", code=302)
+        elif post[-1]=="3":
+            for i in range(len(works_not_sorted)):
+                if works_not_sorted[i]["id"]==int(post[:-1:]):
+                    works_not_sorted.pop(i)
+                    break
         if post == '7grade':
             grade=7
         elif post == '8grade':
@@ -69,7 +81,7 @@ def creation():
             print(request.form)
             grade=int(request.form["grade"])
             file = request.files['image']
-            
+            return file
         if post == '7grade':
             grade=7
         elif post == '8grade':
