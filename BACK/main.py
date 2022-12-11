@@ -84,10 +84,8 @@ def creation():
     if request.method == 'POST':
         post = list(request.form.keys())[0]
         if list(request.form.keys())[-1]=='create_work':
-            print(request.form)
+            print(request.form.keys())
             grade=int(request.form["grade"])
-            file = request.files["file"]
-            print(file)
         if post == '7grade':
             grade=7
         elif post == '8grade':
