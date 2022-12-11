@@ -8,52 +8,60 @@
 {% endblock %}
 {% block menu_body %}
 <p class="tag">Аккаунт</p>
-<p><a class="tag" href="/">Главная</a></p>
+<p><a class="tag" href="/menu">Главная</a></p>
 {% endblock %}
 {% block body %}
 <div class="container">
-  {% if not stats['completed'] and not stats['started'] %}
+  {% if  works_0 %}
   <h1 class="subtitles">
     Новые
   </h1>
+  {% for work in works_0 %}
   <article class="work">
     <div class="work__description">
-      <div class="work__type">Проверочная</div>
+      <div class="work__type">{{work["type"]}}</div>
       <div class="work__stats"></div>
-      <div class="work__name">практика первых номеров ЕГЭ </div>
+      <div class="work__name">{{work["name"]}} </div>
       <div class="work__stats"></div>
     </div>
     <form class="work__form" method="POST" action="/work">
       <button name="start_work" type="submit" class="work__button">Начать работу</button>
     </form>
   </article>
+  {% endfor %}
   {% endif %}
-  {% if not stats['completed'] and stats['started'] %}
+  {% if  works_1  %}
   <h1 class="subtitles">
     Начатые
   </h1>
+  {% for work in works_1 %}
   <article class="work">
     <div class="work__description">
-      <div class="work__type">Проверочная</div>
-      <div class="work__stats">Правильно {{ stats['correct'] }} из {{ stats['answers'] }}</div>
-      <div class="work__name">практика первых номеров ЕГЭ </div>
-      <div class="work__stats">Это {{ (stats['correct'] * 100) // stats['answers'] }}%</div>
+      <div class="work__type">{{work["type"]}}</div>
+      <div class="work__stats">Правильно {{ work["stats"][0] }} из {{ work["stats"][1] }}</div>
+      <div class="work__name">{{work["name"]}}</div>
+      <div class="work__stats">Это {{ (work["stats"][0] * 100) // work["stats"][1] }}%</div>
     </div>
-    <a class="work__button" href="/work">ПРОДОЛЖИТЬ РАБОТУ</a>
+    <form class="work__form" method="POST" action="/work">
+      <button name="continue_work" type="submit" class="work__button">Продолжить работу</button>
+    </form>
   </article>
+  {% endfor %}
   {% endif %}
-  {% if stats['completed'] %}
+  {% if  works_2 %}
   <h1 class="subtitles">
     Отправленные
   </h1>
+  {% for work in works_2 %}
   <article class="work">
     <div class="work__description">
-      <div class="work__type">Проверочная</div>
-      <div class="work__stats">Правильно {{ stats['correct'] }} из {{ stats['answers'] }}</div>
-      <div class="work__name">практика первых номеров ЕГЭ </div>
-      <div class="work__stats">Это {{ (stats['correct'] * 100) // stats['answers'] }}%</div>
+      <div class="work__type">{{work["type"]}}</div>
+      <div class="work__stats">Правильно {{ work["stats"][0] }} из {{ work["stats"][1] }}</div>
+      <div class="work__name">{{work["name"]}} </div>
+      <div class="work__stats">Это {{ (work["stats"][0] * 100) // work["stats"][1] }}%</div>
     </div>
   </article>
+  {% endfor %}
   {% endif %}
 </div>
 

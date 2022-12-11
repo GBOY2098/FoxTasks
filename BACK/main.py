@@ -13,31 +13,32 @@ allowed_tasks_extensions = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'raw', 'tiff', '
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in allowed_tasks_extensions
 
+works=[{"id": 1 , "type": "Практическая","name": "Практика первых номеров егэ","status": 0 ,"stats": [0,4]},
+       {"id": 2 , "type": "Практическая","name": "Практика первых номеров егэ","status": 0 ,"stats": [0,4]},
+       {"id": 3 , "type": "Самостоятельная","name": "Практика первых номеров егэ","status": 1 ,"stats": [2,4]},
+       {"id": 4 , "type": "Контрольная","name": "Практика первых номеров егэ","status": 2 ,"stats":[29,34]},
+       ]
+works_0=[x for x in works if x["status"]==0]
+works_1=[x for x in works if x["status"]==1]
+works_2=[x for x in works if x["status"]==2]
+
+tasks = [{'photo': '/STATIC/Tasks/t0e0.jpg','id': 0,'answer': 1,'last_answer': '','is_correct': None}, 
+         {'photo': '/STATIC/Tasks/t0e1.jpg','id': 1,'answer': 2,'last_answer': '','is_correct': None},
+         {'photo': '/STATIC/Tasks/t0e2.jpg','id': 2,'answer': 3,'last_answer': '','is_correct': None},
+         {'photo': '/STATIC/Tasks/t0e3.jpg','id': 3,'answer': 4,'last_answer': '','is_correct': None}]
+
+stats = {'completed': False, 
+         'started': False,
+         'correct': 0, 
+         'answers': len(tasks)}
 
 works_not_sorted=[{'class': random.randint(7,11), 'type': random.randint(1,3),'name':random.randint(1000,10000),'id': random.randint(1,10000)} for i in range(30)]
-students_not_sorted=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия', 'result': str(75)+'%'} for i in range(50)]
+students_not_sorted=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия'} for i in range(50)]
 grade=7
 
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
 app.config['UPLOAD_FOLDER'] = tasks_upload_folder
 
-# @app.route("/work", methods=['POST', 'GET'])
-# def work():
-#     if request.method == 'POST':
-#         post = list(request.form.keys())[0]
-#         if post == 'start_work':
-#             stats['started'] = True
-#         else:
-#             answer = request.form[str(post)]
-#             if answer == str(tasks[int(post)]['answer']) and not tasks[int(post)]['last_answer']:
-#                 tasks[int(post)]['is_correct'] = 1
-#                 stats['correct'] += 1
-#             elif answer == str(tasks[int(post)]['answer']):
-#                 tasks[int(post)]['is_correct'] = 2
-#             else:
-#                 tasks[int(post)]['is_correct'] = 0
-#             tasks[int(post)]['last_answer'] = answer
-#     return render_template('work.html', tasks=tasks)
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
@@ -48,11 +49,29 @@ def home():
     return render_template('Login.html', )
 
 @app.route("/menu", methods=['POST', 'GET'])
-# def home():
-#     if request.method == 'POST':
-#         if list(request.form.keys())[0] == 'end_work':
-#             stats['completed'] = True
-#     return render_template('index.html', stats=stats)
+def menu():
+    if request.method == 'POST':
+        if list(request.form.keys())[0] == 'end_work':
+            stats['completed'] = True
+    return render_template('index.html', works_0=works_0,works_1=works_1,works_2=works_2)
+
+@app.route("/work", methods=['POST', 'GET'])
+def work():
+    if request.method == 'POST':
+        post = list(request.form.keys())[0]
+        if post == 'start_work':
+            stats['started'] = True
+        else:
+            answer = request.form[str(post)]
+            if answer == str(tasks[int(post)]['answer']) and not tasks[int(post)]['last_answer']:
+                tasks[int(post)]['is_correct'] = 1
+                stats['correct'] += 1
+            elif answer == str(tasks[int(post)]['answer']):
+                tasks[int(post)]['is_correct'] = 2
+            else:
+                tasks[int(post)]['is_correct'] = 0
+            tasks[int(post)]['last_answer'] = answer
+    return render_template('work.html', tasks=tasks)
 
 @app.route("/teacher", methods=['POST', 'GET'])
 def techer():
@@ -141,5 +160,4 @@ if __name__ == '__main__':
     #          'started': False,
     #          'correct': 0, 
     #          'answers': len(tasks)}
-
     app.run()
