@@ -85,10 +85,12 @@ def creation():
         if list(request.form.keys())[-1]=='create_work':
             print(request.form, "id: ", workid)
             grade=int(request.form["grade"])
+            tasks_index = 0
             for file in request.files.values():
                 if file and allowed_file(file.filename):
                     filename = secure_filename(file.filename)
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], f'{workid}_{tasks_index}.{filename.rsplit(".", 1)[1]}'))
+                    tasks_index += 1
         return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('creation.html', )
 
