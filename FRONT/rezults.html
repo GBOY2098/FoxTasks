@@ -31,7 +31,7 @@
                 <tbody>
                   {% for student in students %}
                       <tr>
-                        <th scope="row">{{ student['num']}}</th>
+                        <th scope="row">{{ student['id']}}</th>
                         <td>{{ student['name']}}</td>
                         <td>{{ student['surname']}}</td>
                         <td class = 'percent'>{{ student['result']}}</td>
@@ -40,9 +40,9 @@
                 </tbody>
               </table>
     </header>
-    <div>
-      <button class='btn btn-secondary rounded-5 auditory-back-r'>Назад</button>
-    </div>
+    <form method="post" >
+      <input type="submit" name="home" value="Назад" class='btn btn-secondary rounded-5 auditory-back-r'></button>
+    </form>
     <!-- <div class="d-flex flex-row justify-content-end">
         <button class="auditory-back">sdfsd</button>
       </div> -->

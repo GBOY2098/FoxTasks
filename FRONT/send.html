@@ -40,13 +40,13 @@
                     <tbody>
                       {% for student in students %}
                       <tr>
-                        <th scope="row">{{ student['num']}}</th>
+                        <th scope="row">{{ student['id']}}</th>
                         <td>{{ student['name']}}</td>
                         <td>{{ student['surname']}}</td>
                         <td>
                             <div>
                                 <label>
-                                  <input form="form" name="{{student['num']}}" type="checkbox" class ='checkbox-style'>
+                                  <input form="form" name="{{student['id']}}" type="checkbox" class ='checkbox-style'>
                                 </label>
                               </div>
                         </td>

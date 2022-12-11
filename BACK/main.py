@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from configparser import ConfigParser
 import sqlalchemy
 import os.path
-
+import random
 
 tasks_upload_folder = './FRONT/STATIC/Tasks'
 allowed_tasks_extensions = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'raw', 'tiff', 'jp2'}
@@ -20,10 +20,8 @@ works_not_sorted=[
 {'class': 9, 'type': 1,'name': 'практика первых номеров ОГЭ 3','id': 3},
 {'class': 10, 'type': 2,'name': 'задачки чтобы почилить после ОГЭ','id': 4},
 {'class': 11, 'type': 3,'name': 'практика первых номеров ЕГЭ 1','id': 5}]
+students_not_sorted=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия', 'result': str(75)+'%'} for i in range(50)]
 grade=7
-works =[x for x in works_not_sorted if x['class']==grade]
-
-students=[{'num': i+1, 'name': 'Имя', 'surname': 'Фамилия', 'result': str(75)+'%'} for i in range(10)]
 
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
 app.config['UPLOAD_FOLDER'] = tasks_upload_folder
@@ -96,9 +94,6 @@ def creation():
     if request.method == 'POST':
         workid = time()
         post = list(request.form.keys())[0]
-        if list(request.form.keys())[-1]=='create_work':
-            print(request.form, "id: ", workid)
-            grade=int(request.form["grade"])
         if post == '7grade':
             grade=7
         elif post == '8grade':
@@ -109,20 +104,22 @@ def creation():
             grade=10
         elif post == '11grade':
             grade=11
-        works =[x for x in works_not_sorted if x['class']==grade]
-        file = request.files['file0']
-        print(file)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        if list(request.form.keys())[-1]=='create_work':
+            print(request.form, "id: ", workid)
+            grade=int(request.form["grade"])
+            for file in request.files.values():
+                if file and allowed_file(file.filename):
+                    filename = secure_filename(file.filename)
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('creation.html', )
 
 
 @app.route("/send", methods=['POST', 'GET'])
 def send():
+    global grade
+    students=[x for x in students_not_sorted if x['class']==grade]
     if request.method == 'POST':
-        post = list(request.form.keys())[0]
         if list(request.form.keys())[-1]=='send_work':
             selected=list(request.form.keys())[:-1:]
             print(selected)
@@ -131,6 +128,11 @@ def send():
 
 @app.route("/rezults", methods=['POST', 'GET'])
 def rezults():
+    global grade
+    students=[x for x in students_not_sorted if x['class']==grade]
+    if request.method == 'POST':
+        if list(request.form.keys())[-1]=='home':
+            return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('rezults.html', students=students)
 
 if __name__ == '__main__':
