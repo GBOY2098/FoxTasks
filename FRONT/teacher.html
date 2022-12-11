@@ -8,11 +8,11 @@
 {% endblock %}
 {% block menu_body %}
 <form method="post">
-  <p><input class="tag" name="7grade" type="submit" value="7 класс"><p>
-  <p><input class="tag" name="8grade" type="submit" value="8 класс"><p>
-  <p><input class="tag" name="9grade" type="submit" value="9 класс"><p>
-  <p><input class="tag" name="10grade" type="submit" value="10 класс"><p>
-  <p><input class="tag" name="11grade" type="submit" value="11 класс"></p>
+  <p><input class="tag" name="7" type="submit" value="7 класс"><p>
+  <p><input class="tag" name="8" type="submit" value="8 класс"><p>
+  <p><input class="tag" name="9" type="submit" value="9 класс"><p>
+  <p><input class="tag" name="10" type="submit" value="10 класс"><p>
+  <p><input class="tag" name="11" type="submit" value="11 класс"></p>
   <p><a class="tag" href="/creation">Создать работу</a><p>
 </form>
 {% endblock %}
@@ -26,9 +26,9 @@
       <div class="work__name">{{ work['name'] }} </div>
       <form  class="work__menu" method="post">
         <!-- <button name="edit_work" type="submit" class="work__edit"> </button> -->
-        <button name="{{work['id']*10+1}}" type="submit" class="work__stat"> </button>
-        <button name="{{work['id']*10+2}}" type="submit" class="work__send"> </button>
-        <button name="{{work['id']*10+3}}" type="submit" class="work__delete"> </button>
+        <button name="{{work['id']*10+2}}" type="submit" class="work__stat"> </button>
+        <button name="{{work['id']*10+3}}" type="submit" class="work__send"> </button>
+        <button name="{{work['id']*10+4}}" type="submit" class="work__delete"> </button>
       </form>
     </div>
   </article>

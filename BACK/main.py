@@ -14,18 +14,12 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in allowed_tasks_extensions
 
 
-works_not_sorted=[
-{'class': 7, 'type': 1,'name': 'задание для малолеьних клоунов','id': 1},
-{'class': 8, 'type': 2,'name': 'задание для малолеьних клоунов','id': 2},
-{'class': 9, 'type': 1,'name': 'практика первых номеров ОГЭ 3','id': 3},
-{'class': 10, 'type': 2,'name': 'задачки чтобы почилить после ОГЭ','id': 4},
-{'class': 11, 'type': 3,'name': 'практика первых номеров ЕГЭ 1','id': 5}]
+works_not_sorted=[{'class': random.randint(7,11), 'type': random.randint(1,3),'name':random.randint(1000,10000),'id': random.randint(1,10000)} for i in range(30)]
 students_not_sorted=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия', 'result': str(75)+'%'} for i in range(50)]
 grade=7
 
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
 app.config['UPLOAD_FOLDER'] = tasks_upload_folder
-
 
 # @app.route("/work", methods=['POST', 'GET'])
 # def work():
@@ -44,6 +38,7 @@ app.config['UPLOAD_FOLDER'] = tasks_upload_folder
 #                 tasks[int(post)]['is_correct'] = 0
 #             tasks[int(post)]['last_answer'] = answer
 #     return render_template('work.html', tasks=tasks)
+
 @app.route("/", methods=['POST', 'GET'])
 def home():
     if request.method == 'POST':
@@ -51,12 +46,14 @@ def home():
         if post=="enter" and request.form["log"]=="teacher" and request.form["pas"]=="1234":
             return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('Login.html', )
+
 @app.route("/menu", methods=['POST', 'GET'])
 # def home():
 #     if request.method == 'POST':
 #         if list(request.form.keys())[0] == 'end_work':
 #             stats['completed'] = True
 #     return render_template('index.html', stats=stats)
+
 @app.route("/teacher", methods=['POST', 'GET'])
 def techer():
     global works_not_sorted
@@ -64,27 +61,18 @@ def techer():
     global id
     if request.method == 'POST':
         post = list(request.form.keys())[0]
-        if post[-1]=="1" :
+        if post[-1]=="2" :
             id=post[:-1:]
             return redirect("http://127.0.0.1:5000/rezults", code=302)
-        elif post[-1]=="2":
+        elif post[-1]=="3":
             id=post[:-1:]
             return redirect("http://127.0.0.1:5000/send", code=302)
-        elif post[-1]=="3":
+        elif post[-1]=="4":
             for i in range(len(works_not_sorted)):
                 if works_not_sorted[i]["id"]==int(post[:-1:]):
                     works_not_sorted.pop(i)
                     break
-        if post == '7grade':
-            grade=7
-        elif post == '8grade':
-            grade=8
-        elif post == '9grade':
-            grade=9
-        elif post == '10grade':
-            grade=10
-        elif post == '11grade':
-            grade=11
+        grade=int(post)
     works =[x for x in works_not_sorted if x['class']==grade]
     return render_template('teacher.html', works=works)
 
@@ -93,17 +81,7 @@ def creation():
     global grade
     if request.method == 'POST':
         workid = time()
-        post = list(request.form.keys())[0]
-        if post == '7grade':
-            grade=7
-        elif post == '8grade':
-            grade=8
-        elif post == '9grade':
-            grade=9
-        elif post == '10grade':
-            grade=10
-        elif post == '11grade':
-            grade=11
+        grade=int(list(request.form.keys())[0])
         if list(request.form.keys())[-1]=='create_work':
             print(request.form, "id: ", workid)
             grade=int(request.form["grade"])
@@ -113,7 +91,6 @@ def creation():
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('creation.html', )
-
 
 @app.route("/send", methods=['POST', 'GET'])
 def send():
