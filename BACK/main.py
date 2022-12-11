@@ -1,7 +1,18 @@
-from flask import Flask, render_template, request, redirect
+from time import time
+from werkzeug.utils import secure_filename
+from flask import Flask, render_template, request, redirect, url_for
 from configparser import ConfigParser
 import sqlalchemy
 import os.path
+
+
+tasks_upload_folder = './FRONT/STATIC/Tasks'
+allowed_tasks_extensions = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'raw', 'tiff', 'jp2'}
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1] in allowed_tasks_extensions
+
 
 works_not_sorted=[
 {'class': 7, 'type': 1,'name': 'задание для малолеьних клоунов','id': 1},
@@ -15,6 +26,7 @@ works =[x for x in works_not_sorted if x['class']==grade]
 students=[{'num': i+1, 'name': 'Имя', 'surname': 'Фамилия', 'result': str(75)+'%'} for i in range(10)]
 
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
+app.config['UPLOAD_FOLDER'] = tasks_upload_folder
 
 
 # @app.route("/work", methods=['POST', 'GET'])
@@ -82,9 +94,10 @@ def techer():
 def creation():
     global grade
     if request.method == 'POST':
+        workid = time()
         post = list(request.form.keys())[0]
         if list(request.form.keys())[-1]=='create_work':
-            print(request.form.keys())
+            print(request.form, "id: ", workid)
             grade=int(request.form["grade"])
         if post == '7grade':
             grade=7
@@ -97,8 +110,14 @@ def creation():
         elif post == '11grade':
             grade=11
         works =[x for x in works_not_sorted if x['class']==grade]
+        file = request.files['file0']
+        print(file)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return redirect("http://127.0.0.1:5000/teacher", code=302)
     return render_template('creation.html', )
+
 
 @app.route("/send", methods=['POST', 'GET'])
 def send():

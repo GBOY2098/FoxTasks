@@ -23,7 +23,7 @@
 {% endblock %}
 {% block body %}
 <div class="container">
-    <form  id="for" method="post" >
+    <form action="" id="for" method="post" enctype=multipart/form-data>
         <div class="work__settings">
         <input name="name" class="work__settings__name" placeholder="Введите название работы" required size=30
             type="text">
@@ -46,8 +46,8 @@
         </div>
         <div class="con">
             <div class="work__settings__task__adding">
-                <input  name="file" class="work__settings__file__adding" type="file" required accept="image/*">
-                <input  name="answer" class="work__settings__answer__adding" required type="text"
+                <input  name="file0" class="work__settings__file__adding" type="file" required accept="image/*">
+                <input  name="answer0" class="work__settings__answer__adding" required type="text"
                     placeholder="Предполагаемый ответ">
             </div>
         </div>
