@@ -9,15 +9,16 @@
   </head>
   <body class = 'body'>
     <header class = 'header'>
-        <div class="d-flex flex-row m-3">            
+        <!-- <div class="d-flex flex-row m-3">            
             <p class="m-2 mx-4" style = 'font-size: 30px;'>Класс:</p>
             <select class="form-control form-control-sm auditory-select" style="width: 5em;border-radius: 28px 28px 28px 28px;background-color:#c4c4c4;text-align: center;font-size: 30px">
                 <option value="value1">И</option>
                 <option value="value2">Б</option>
                 <option value="value3">З</option>
             </select>
-        </div>
-        
+        </div> -->
+        <br>
+        <br>
         <div class="table-container">
             <table class="table table-striped">
                 <thead>
@@ -25,6 +26,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Имя</th>
                     <th scope="col">Фамилия</th>
+                    <th scope="col">Класс</th>
                     <th scope="col">Процент выполнения</th>
                   </tr>
                 </thead>
@@ -34,13 +36,14 @@
                         <th scope="row">{{ student['id']}}</th>
                         <td>{{ student['name']}}</td>
                         <td>{{ student['surname']}}</td>
+                        <td>{{ student['class']}}</td>
                         <td class = 'percent'>{{ student['result']}}</td>
                       </tr>
                   {% endfor %} 
                 </tbody>
               </table>
     </header>
-    <form method="post" >
+    <form method="post" action="/teacher">
       <input type="submit" name="home" value="Назад" class='btn btn-secondary rounded-5 auditory-back-r'></button>
     </form>
     <!-- <div class="d-flex flex-row justify-content-end">

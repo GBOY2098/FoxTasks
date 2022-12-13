@@ -5,7 +5,6 @@ from configparser import ConfigParser
 import sqlalchemy
 import os.path
 import random
-
 tasks_upload_folder = './FRONT/STATIC/Tasks'
 allowed_tasks_extensions = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'raw', 'tiff', 'jp2'}
 
@@ -34,11 +33,12 @@ stats = {'completed': False,
 
 works_not_sorted=[{'class': random.randint(7,11), 'type': random.randint(1,3),'name':random.randint(1000,10000),'id': random.randint(1,10000)} for i in range(30)]
 students_not_sorted=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия'} for i in range(50)]
-grade=7
-
+output=[]
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
 app.config['UPLOAD_FOLDER'] = tasks_upload_folder
-
+def idsave(input):
+    output.append(input)
+    return output[-1]
 
 @app.route("/", methods=['POST', 'GET'])
 def home():
@@ -50,17 +50,28 @@ def home():
 
 @app.route("/menu", methods=['POST', 'GET'])
 def menu():
+    works_0=[x for x in works if x["status"]==0]
+    works_1=[x for x in works if x["status"]==1]
+    works_2=[x for x in works if x["status"]==2]
     if request.method == 'POST':
-        if list(request.form.keys())[0] == 'end_work':
-            stats['completed'] = True
+        id=int(list(request.form.keys())[0])
+        print(id)
+        for work in works:
+                if work["id"]==id:
+                    work["status"] = 2
     return render_template('index.html', works_0=works_0,works_1=works_1,works_2=works_2)
 
 @app.route("/work", methods=['POST', 'GET'])
 def work():
+    global works
     if request.method == 'POST':
         post = list(request.form.keys())[0]
-        if post == 'start_work':
-            stats['started'] = True
+        if int(post) % 100  == 99:
+            id=int(post)//100
+            for work in works:
+                if work["id"]==id:
+                    print(work)
+                    work["status"] = 1
         else:
             answer = request.form[str(post)]
             if answer == str(tasks[int(post)]['answer']) and not tasks[int(post)]['last_answer']:
@@ -71,27 +82,24 @@ def work():
             else:
                 tasks[int(post)]['is_correct'] = 0
             tasks[int(post)]['last_answer'] = answer
-    return render_template('work.html', tasks=tasks)
+            id=idsave(0)
+    return render_template('work.html', id=id,tasks=tasks)
 
 @app.route("/teacher", methods=['POST', 'GET'])
 def techer():
-    global works_not_sorted
-    global grade
-    global id
+    grade=7
+    post=list(request.form.keys())
     if request.method == 'POST':
-        post = list(request.form.keys())[0]
-        if post[-1]=="2" :
-            id=post[:-1:]
-            return redirect("http://127.0.0.1:5000/rezults", code=302)
-        elif post[-1]=="3":
-            id=post[:-1:]
-            return redirect("http://127.0.0.1:5000/send", code=302)
-        elif post[-1]=="4":
+        if len(post)>1:
+            selected=post[:-1:]
+            print(selected)
+        elif post[0][-1]=="c":
+            grade=int(post[0][:-1:])
+        elif post[0].isdigit():
             for i in range(len(works_not_sorted)):
-                if works_not_sorted[i]["id"]==int(post[:-1:]):
+                if works_not_sorted[i]["id"]==int(post[0]):
                     works_not_sorted.pop(i)
                     break
-        grade=int(post)
     works =[x for x in works_not_sorted if x['class']==grade]
     return render_template('teacher.html', works=works)
 
@@ -115,22 +123,18 @@ def creation():
 
 @app.route("/send", methods=['POST', 'GET'])
 def send():
-    global grade
-    students=[x for x in students_not_sorted if x['class']==grade]
     if request.method == 'POST':
-        if list(request.form.keys())[-1]=='send_work':
-            selected=list(request.form.keys())[:-1:]
-            print(selected)
-        return redirect("http://127.0.0.1:5000/teacher", code=302)
+        if list(request.form.keys())[0].isdigit():
+            id=list(request.form.keys())[0]
+            students=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия'} for i in range(10)]
     return render_template('send.html', students=students)
 
 @app.route("/rezults", methods=['POST', 'GET'])
 def rezults():
-    global grade
-    students=[x for x in students_not_sorted if x['class']==grade]
     if request.method == 'POST':
-        if list(request.form.keys())[-1]=='home':
-            return redirect("http://127.0.0.1:5000/teacher", code=302)
+        if list(request.form.keys())[0].isdigit():
+            id=list(request.form.keys())[0]
+            students=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия'} for i in range(10)]
     return render_template('rezults.html', students=students)
 
 if __name__ == '__main__':
