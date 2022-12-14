@@ -343,11 +343,11 @@ main {
 }
 
 .correct {
-  background-color: #7bbb89;
+  background-color: #5fd579;
 }
 
 .incorrect {
-  background-color: #f3686f;
+  background-color: #f34e56;
 }
 
 .undone {

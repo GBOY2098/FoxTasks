@@ -16,14 +16,13 @@
     <p>
     <p><input class="tag" name="10c" type="submit" value="10 класс">
     <p>
-    <p><input class="tag" name="11c" type="submit" value="11 класс"></p>
-    <p><a class="tag" href="/creation">Создать работу</a>
-    <p>
+    <p><input class="tag" name="11c" type="submit" value="11 класс">
+    </p>
 </form>
 {% endblock %}
 {% block body %}
 <div class="container">
-    <form action="" id="for" method="post" enctype=multipart/form-data>
+    <form action="/teacher" id="for" method="post" enctype=multipart/form-data>
         <div class="work__settings">
         <input name="name" class="work__settings__name" placeholder="Введите название работы" required size=30
             type="text">
@@ -35,9 +34,9 @@
             <option value="11" selected>11 класс</option>
         </select>
         <select class="work__type__select" name="type">
-            <option value="practise">Практическая работа</option>
-            <option value="test" selected>Самостоятельная работа</option>
-            <option value="exam">Контрольная работа</option>
+            <option value="1">Практическая работа</option>
+            <option value="2" selected>Самостоятельная работа</option>
+            <option value="3">Контрольная работа</option>
         </select>
         </div>
         <div class="work__settings__titles">
