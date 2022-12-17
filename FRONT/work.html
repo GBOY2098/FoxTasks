@@ -8,8 +8,11 @@
 Выполнение работы
 {% endblock %}
 {% block menu_body %}
-<p>Аккаунт</p>
-<p><a class="tag" href="/">Главная</a></p>
+<p><a class="tag" href="/menu">Главная</a></p>
+<form method="post" action="/logout">
+  <p><input class="tag" name="logout" type="submit" value="Выйти из аккаунта">
+  <p>
+</form>
 {% endblock %}
 {% block body %}
 <div class="container">
@@ -18,7 +21,7 @@
   {% if task['is_correct'] == 1 %}
     correct
   {% endif %}
-  {% if task['is_correct'] == 0 %}
+  {% if task['is_correct'] == 3 %}
     incorrect
   {% endif %}
   {% if task['is_correct'] == 2 %}
@@ -29,7 +32,7 @@
     {% if task['is_correct'] == 1 %}
       correct
     {% endif %}
-    {% if task['is_correct'] == 0 %}
+    {% if task['is_correct'] == 3 %}
       incorrect
     {% endif %}
     {% if task['is_correct'] == 2 %}
@@ -38,13 +41,13 @@
       Ответ:
       <input name={{ task['id'] }} class="task__answer" {% if task['is_correct']==1 or task['is_correct']==2 %} disabled
         {% endif %} type="text" placeholder="Введите ответ" value={{ task['last_answer'] }}>
-      <input type="submit" {% if task['is_correct']==1 or task['is_correct']==2 %} disabled {% endif %}
+      <input type="submit" name="{{id*100+99}}" {% if task['is_correct']==1 or task['is_correct']==2 %} disabled {% endif %}
         class="task__button" value="Отправить"></input>
     </form>
   </article>
   {% endfor %}
-  <form class="end" method="POST" action="/">
-    <input name="end_work" value="Завершить работу" type="submit" class="end__button"></input>
+  <form class="end" method="POST" action="/menu">
+    <input name="{{id}}" value="Завершить работу" type="submit" class="end__button"></input>
   </form>
   <br>
 </div>

@@ -343,11 +343,11 @@ main {
 }
 
 .correct {
-  background-color: #7bbb89;
+  background-color: #5fd579;
 }
 
 .incorrect {
-  background-color: #f3686f;
+  background-color: #f34e56;
 }
 
 .undone {
@@ -363,7 +363,7 @@ main {
   font-size: 20px;
   color: #FFF;
   text-decoration: none;
-
+  background-color: #00000000;
 }
 
 .subtitles {
@@ -434,6 +434,12 @@ main {
   width: 60px;
   height: 30px;
   background: url("../Icons/send.svg") no-repeat;
+  background-size: 30px 30px;
+}
+.work__delete{
+  width: 60px;
+  height: 30px;
+  background: url("../Icons/trash.svg") no-repeat;
   background-size: 30px 30px;
 }
 
@@ -575,3 +581,43 @@ main {
   font-size: 20px;
   font-family: sans-serif;
 }
+
+.login__container{
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  align-items: center;
+  background-color: #f2e9e4;
+  justify-content: center;
+}
+.login__form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__input{
+  margin-top: 20px;
+  background-color: #f2e9e4;
+  padding-left: 5px;
+  font-size: 25px;
+  border: 2px #A9A9A9 solid;
+}
+
+.login__button{
+  font-size: 25px;
+  margin-top: 15px;
+  background-color: #87CEEB;
+  border-radius: 5px;
+  padding-inline: 7px;
+}
+
+.flash {
+  padding: 10px;
+}
+.flash.success {
+ color: rgb(47, 145, 47);
+}
+.flash.success {
+  color: rgb(255, 63, 63);
+ }
