@@ -21,6 +21,9 @@
           <form class="login__form"  method="post">
             <input name="log" class="login__input" type="text" placeholder="Логин" >
             <input  name="pas" class="login__input" type="password" placeholder="Пароль" >
+            {% for category, message in get_flashed_messages(True) %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
             <input name="enter" class="login__button" type="submit" value="Далее" >
           </form>
       </div> 

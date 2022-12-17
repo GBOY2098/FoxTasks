@@ -7,8 +7,10 @@
 Главная
 {% endblock %}
 {% block menu_body %}
-<p class="tag">Аккаунт</p>
-<p><a class="tag" href="/menu">Главная</a></p>
+<form method="post" action="/logout">
+  <p><input class="tag" name="logout" type="submit" value="Выйти из аккаунта">
+  <p>
+</form>
 {% endblock %}
 {% block body %}
 <div class="container">

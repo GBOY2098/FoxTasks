@@ -1,7 +1,11 @@
 from time import time
+from flask_socketio import SocketIO
 from werkzeug.utils import secure_filename
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 from configparser import ConfigParser
+from UserLogin import UserLogin
+from dbplaceholder import FDataBase
 import sqlalchemy
 import os.path
 import random
@@ -28,20 +32,65 @@ stats = [{'last_answer': '','is_correct': 0},
 works_not_sorted=[{'class': random.randint(7,11), 'type': random.randint(1,3),'name':random.randint(1000,10000),'id': random.randint(1,10000)} for i in range(30)]
 students_not_sorted=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия'} for i in range(50)]
 
+dbase = FDataBase()
+
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
 app.config['UPLOAD_FOLDER'] = tasks_upload_folder
+app.config['SECRET_KEY'] = 'b10c9f26110997bc68bf736fe0d41a40609f9d94'
+socketio = SocketIO(app)
+
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'
+login_manager.login_message = None
+login_manager.anonymous_user
 
 
-@app.route("/", methods=['POST', 'GET'])
+@login_manager.user_loader
+def load_user(user_id):
+    return UserLogin().fromDB(user_id, dbase)
+
+# @socketio.on('disconnect')
+# def disconnect_user():
+#     logout_user()
+#     session.pop('yourkey', None)
+
+
+@app.route("/", methods=['GET'])
 def home():
+    return redirect(url_for('login'))
+
+
+@app.route("/login", methods=['POST', 'GET'])
+def login():
+    if current_user.get_id():
+        if current_user.get_id() == 'teacher':
+            return redirect("http://127.0.0.1:5000/teacher")
+        else:
+            return redirect("http://127.0.0.1:5000/menu")
+
     if request.method == 'POST':
         post = list(request.form.keys())[2]
-        if post=="enter" and request.form["log"]=="teacher" and request.form["pas"]=="1":
-            return redirect("http://127.0.0.1:5000/teacher", code=302)
-    return render_template('Login.html', )
+
+        if request.form["log"] == "teacher":
+            user = {'username': request.form['log']}
+        else:
+            user = {'username': request.form['log']} | dbase.getUser(request.form['log'])
+        print(user)
+        if post == 'enter' and request.form['pas'] == '1':
+            userlogin = UserLogin().create(user)
+            login_user(userlogin)
+            if request.form["log"] == "teacher":
+                return redirect("http://127.0.0.1:5000/teacher")
+            else:
+                return redirect("http://127.0.0.1:5000/menu")
+        flash(message='Ошибка авторизации. Проверьте корректность введенных данных.', category='error')
+    return render_template('login.html', )
 
 @app.route("/menu", methods=['POST', 'GET'])
+@login_required
 def menu():
+    if current_user.get_id() == 'teacher':
+        return redirect("http://127.0.0.1:5000/")
     global works
     if request.method == 'POST':
         id=int(list(request.form.keys())[0])
@@ -57,7 +106,10 @@ def menu():
     return render_template('index.html', works_0=works_new,works_1=works_started,works_2=works_ended)
 
 @app.route("/work", methods=['POST', 'GET'])
+@login_required
 def work():
+    if current_user.get_id() == 'teacher':
+        return redirect("http://127.0.0.1:5000/")
     global works
     global stats
     if request.method == 'POST':
@@ -88,7 +140,10 @@ def work():
     return render_template('work.html', id=id,tasks=tasks)
 
 @app.route("/teacher", methods=['POST', 'GET'])
-def techer():
+@login_required
+def teacher():
+    if current_user.get_id() != 'teacher':
+        return redirect("http://127.0.0.1:5000/")
     grade=7
     post=list(request.form.keys())
     if request.method == 'POST':
@@ -121,11 +176,17 @@ def techer():
     return render_template('teacher.html', works=works)
 
 @app.route("/creation", methods=['POST', 'GET'])
+@login_required
 def creation():
+    if current_user.get_id() != 'teacher':
+        return redirect("http://127.0.0.1:5000/")
     return render_template('creation.html', )
 
 @app.route("/send", methods=['POST', 'GET'])
+@login_required
 def send():
+    if current_user.get_id() != 'teacher':
+        return redirect("http://127.0.0.1:5000/")
     if request.method == 'POST':
         if list(request.form.keys())[0].isdigit():
             id=list(request.form.keys())[0]
@@ -133,14 +194,22 @@ def send():
             students=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия'} for i in range(10)]
     return render_template('send.html', students=students)
 
-@app.route("/rezults", methods=['POST', 'GET'])
-def rezults():
+@app.route("/results", methods=['POST', 'GET'])
+@login_required
+def results():
+    if current_user.get_id() != 'teacher':
+        return redirect("http://127.0.0.1:5000/")
     if request.method == 'POST':
         if list(request.form.keys())[0].isdigit():
             id=list(request.form.keys())[0]
 
             students=[{'class': random.randint(7,11) ,'id': i+1, 'name': 'Имя', 'surname': 'Фамилия'} for i in range(10)]
-    return render_template('rezults.html', students=students)
+    return render_template('results.html', students=students)
+
+@app.route("/logout", methods=['POST', 'GET'])
+def logout():
+    logout_user()
+    return redirect("http://127.0.0.1:5000/")
 
 if __name__ == '__main__':
     # conf = ConfigParser()

@@ -611,3 +611,13 @@ main {
   border-radius: 5px;
   padding-inline: 7px;
 }
+
+.flash {
+  padding: 10px;
+}
+.flash.success {
+ color: rgb(47, 145, 47);
+}
+.flash.success {
+  color: rgb(255, 63, 63);
+ }
