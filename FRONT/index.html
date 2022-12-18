@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}
+Главная
+{% endblock %}
+
+{% block page_name %}
+Главная
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  {% if not stats['completed'] and not stats['started'] %}
+  <h1 class="subtitles">
+    Новые
+  </h1>
+  <article class="work">
+    <div class="work__description">
+      <div class="work__type">{{work[1]}}</div>
+      <div class="work__stats"></div>
+      <div class="work__name">{{work[2]}} </div>
+    </div>
+    <form class="work__form" method="POST" action="/work">
+      <button name="{{work[0]*100+99}}" type="submit" class="work__button">Начать работу</button>
+    </form>
+  </article>
+  {% endif %}
+  {% if not stats['completed'] and stats['started'] %}
+  <h1 class="subtitles">
+    Начатые
+  </h1>
+  <article class="work">
+    <div class="work__description">
+      <div class="work__type">{{work[2]}}</div>
+      <div class="work__stats">Выполнено на {{ (work[1])}}%</div>
+      <div class="work__name">{{work[3]}} </div>
+    </div>
+    <form class="work__form" method="POST" action="/work">
+      <button name="{{work[0]*100+98}}" type="submit" class="work__button">Продолжить работу</button>
+    </form>
+  </article>
+  {% endif %}
+  {% if stats['completed'] %}
+  <h1 class="subtitles">
+    Отправленные
+  </h1>
+  <article class="work">
+    <div class="work__description">
+      <div class="work__type">{{work[2]}}</div>
+      <div class="work__stats">Выполнено на {{ (work[1])}}%</div>
+      <div class="work__name">{{work[3]}} </div>
+    </div>
+  </article>
+  {% endif %}
+</div>
+
+{% endblock %}
