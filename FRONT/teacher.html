@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+Главная
+{% endblock %}
+
+{% block page_name %}
+Главная
+{% endblock %}
+{% block menu_body %}
+<form method="post">
+  <p><input class="tag" name="7c" type="submit" value="7 класс">
+  <p>
+  <p><input class="tag" name="8c" type="submit" value="8 класс">
+  <p>
+  <p><input class="tag" name="9c" type="submit" value="9 класс">
+  <p>
+  <p><input class="tag" name="10c" type="submit" value="10 класс">
+  <p>
+  <p><input class="tag" name="11c" type="submit" value="11 класс"></p>
+  <p><input class="tag" name="create" type="submit" value="Создать работу">
+  <p>
+</form>
+<form method="post" action="/logout">
+  <p><input class="tag" name="logout" type="submit" value="Выйти из аккаунта">
+  <p>
+</form>
+{% endblock %}
+{% block body %}
+<div class="container">
+
+  {% for work in works %}
+  <article class="work">
+    <div class="work__description_teacher">
+      <div class="work__type">{{ work[2] }}</div>
+      <div class="work__name">{{ work[1] }} </div>
+      <div class="work__menu">
+        <form action="/results" method="post">
+          <button name="{{work[0]}}" type="submit" class="work__stat"> </button>
+        </form>
+        <form action="/send" method="post">
+          <button name="{{work[0]}}" type="submit" class="work__send"> </button>
+        </form>
+        <form method="post">
+          <button name="{{work[0]}}" type="submit" class="work__delete"> </button>
+        </form>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
+{% endblock %}

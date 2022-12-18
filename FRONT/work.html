@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Выполнение работы
+{% endblock %}
+
+{% block page_name %}
+Выполнение работы
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  {% for i in range(len(tasks)) %}
+  <article class="task task1
+  {% if tasks[i][3] == 1 %}
+    correct
+  {% endif %}
+<<<<<<< Updated upstream
+  {% if task['is_correct'] == 0 %}
+=======
+  {% if tasks[i][3] == 3 %}
+>>>>>>> Stashed changes
+    incorrect
+  {% endif %}
+  {% if tasks[i][3] == 2 %}
+    undone
+  {% endif %}">
+    <img class="task__photo" src={{ tasks[i][0] }} alt="Missing image">
+    <form class="form 
+    {% if tasks[i][3] == 1 %}
+      correct
+    {% endif %}
+<<<<<<< Updated upstream
+    {% if task['is_correct'] == 0 %}
+=======
+    {% if tasks[i][3] == 3 %}
+>>>>>>> Stashed changes
+      incorrect
+    {% endif %}
+    {% if tasks[i][3] == 2 %}
+      undone
+    {% endif %}"
+    method="POST">
+      Ответ:
+<<<<<<< Updated upstream
+      <input name={{ task['id'] }} class="task__answer" 
+      {% if task['is_correct'] == 1 or task['is_correct'] == 2 %}
+        disabled
+      {% endif %}
+      type="text" placeholder="Введите ответ" value={{ task['last_answer'] }}>
+      <input type="submit"
+      {% if task['is_correct'] == 1 or task['is_correct'] == 2 %}
+        disabled
+      {% endif %}
+      class="task__button" value="Отправить"></input>
+=======
+      <input name={{ i }} class="task__answer" {% if tasks[i][3]==1 or tasks[i][3]==2 %} disabled
+        {% endif %} type="text" placeholder="Введите ответ" value={{ tasks[i][2] }}>
+      <input type="submit" name="{{id*100+99}}" {% if tasks[i][3]==1 or tasks[i][3]==2 %} disabled {% endif %}
+        class="task__button" value="Отправить"></input>
+>>>>>>> Stashed changes
+    </form>
+  </article>
+  {% endfor %}
+  <form class="end" method="POST" action="/">
+    <input name="end_work" value="Завершить работу" type="submit" class="end__button"></input>
+  </form>
+  <br>
+</div>
+{% endblock %}
