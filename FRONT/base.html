@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="STATIC/CSS/zero.css">
   <link rel="stylesheet" href="STATIC/CSS/main.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <link rel="icon" href="./STATIC/Icons/favicon.ico">
+   integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
   <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -31,10 +31,11 @@
     <div class="side-panel">
       <label class="side-button-2" for="side-checkbox">+</label>
       <div class="side-title">Меню:</div>
-      {% block menu_body %}{% endblock %}
+      <p>Аккаунт</p>
+      <p><a class="tag" href="/">Главная</a></p>
     </div>
+
   </main>
   {% block body %}{% endblock %}
 </body>
-{% block code %}{% endblock %}
 </html>

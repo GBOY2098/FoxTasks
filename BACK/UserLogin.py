@@ -1,8 +1,8 @@
 from flask_login import UserMixin
 
 class UserLogin(UserMixin):
-    def fromDB(self, user_id, db):
-        self.__user = {'username': user_id} | db.getUser(user_id)
+    def fromDB(self, user_id):
+        self.__user = {'username': user_id}
         return self
     
     def create(self, user):
