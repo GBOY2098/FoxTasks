@@ -29,7 +29,6 @@
                 <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Имя</th>
                         <th scope="col">Фамилия</th>
                         <th scope="col">Класс</th>
@@ -42,14 +41,13 @@
                     <tbody>
                       {% for student in students %}
                       <tr>
-                        <th scope="row">{{ student['id']}}</th>
-                        <td>{{ student['name']}}</td>
-                        <td>{{ student['surname']}}</td>
-                        <td>{{ student['class']}}</td>
+                        <td>{{ student[1]}}</td>
+                        <td>{{ student[2]}}</td>
+                        <td>{{ student[3]}}</td>
                         <td>
                             <div>
                                 <label>
-                                  <input form="form" name="{{student['id']}}" type="checkbox" class ='checkbox-style'>
+                                  <input form="form" name="{{student[0]}}" type="checkbox" class ='checkbox-style'>
                                 </label>
                               </div>
                         </td>
@@ -59,7 +57,7 @@
                   </table>
         </header>
         <form method="post" id="form" action="/teacher"> <div>
-            <input name="send_work"  type="submit" value="Отправить" class='btn btn-secondary rounded-5 auditory-back-r'>
+            <input name="{{ int(id) * 100 + 99 }}"  type="submit" value="Отправить" class='btn btn-secondary rounded-5 auditory-back-r'>
           </div>
         </form>
       <script type="text/javascript">

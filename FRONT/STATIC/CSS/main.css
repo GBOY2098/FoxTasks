@@ -1,23 +1,26 @@
-:root {
-  --gray: #878787;
+<<<<<<< Updated upstream
+:root{
+  --gray:#878787;
   --purple: #350436;
-  --green: #2db32d;
-  --red: #fc4048;
-}
+  --green:#2db32d;
+  --red:#fc4048;
 
+}
+=======
+>>>>>>> Stashed changes
 header {
   position: relative;
   width: 100%;
-  height: 100px;
-  background-color: #4a4e69;
+  height: 70px;
+  background-color: #aaaaaa;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
 
-.body {
-  background-color: #f2e9e4;
+.body{
+  background-color: #d1d1d1;
 }
 
 #side-checkbox {
@@ -29,7 +32,7 @@ header {
   z-index: 999999;
   top: 0;
   left: -360px;
-  background: #22223b;
+  background: #350436;
   transition: all 0.5s;
   width: 320px;
   height: 100vh;
@@ -39,7 +42,7 @@ header {
 }
 
 .side-title {
-  font-size: 30px;
+  font-size: 20px;
   padding-bottom: 10px;
   margin-bottom: 20px;
   border-bottom: 2px solid #BFE2FF;
@@ -66,7 +69,7 @@ header {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  background: #22223b;
+  background: #350436;
   cursor: pointer;
   border: 2px solid #010a13;
 }
@@ -90,7 +93,7 @@ header {
 
 .side-button-1 .side-open:after,
 .side-button-1 .side-open:before {
-  background: #0d0d3c;
+  background: rgb(66, 28, 116);
 }
 
 .side-button-1 .side-close:after,
@@ -213,7 +216,7 @@ main {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #fff;
+  color: #000000;
 }
 
 .menu {
@@ -225,13 +228,19 @@ main {
   background-color: white;
 }
 
+.menu__line {
+  height: 15%;
+  width: 100%;
+  background-color: #3c3c3c;
+
+}
 
 .work {
   margin-top: 50px;
   position: relative;
   width: 90%;
   left: 5%;
-  background: #22223b;
+  background: #350436;
   border: 2px solid #000000;
   border-radius: 30px;
   color: black;
@@ -239,22 +248,24 @@ main {
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
 }
-
-.work__description {
+<<<<<<< Updated upstream
+.work__description{
   background-color: #fff;
   position: relative;
   border: 2px solid #000000;
-  border-radius: 28px;
+  border-radius:28px;
   font-weight: 500;
 }
+.work__type{
+=======
 
 .work__type {
+>>>>>>> Stashed changes
   font-size: 35px;
   line-height: 35px;
   padding: 12px 30px;
 }
-
-.work__name {
+.work__name{
   font-size: 25px;
   line-height: 25px;
   padding: 12px 30px;
@@ -273,9 +284,9 @@ main {
 
 .task {
   position: relative;
-  border: 0px solid black;
+  border: 2.5px solid black;
   border-radius: 30px;
-  background: #22223b;
+  background: #350436;
   margin-top: 100px;
 }
 
@@ -296,7 +307,7 @@ main {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
-  background: #22223b;
+  background: #350436;
   border-radius: 0px 0px 28px 28px;
 }
 
@@ -323,7 +334,7 @@ main {
 .end {
   font-size: 2em;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .end__button {
@@ -332,7 +343,7 @@ main {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
-  background: #22223b;
+  background: #350436;
   cursor: pointer;
   border: 2px solid #010a13;
   text-decoration: none;
@@ -343,15 +354,15 @@ main {
 }
 
 .correct {
-  background-color: #5fd579;
+  background-color: #2db32d;
 }
 
 .incorrect {
-  background-color: #f34e56;
+  background-color: #fc4048;
 }
 
 .undone {
-  background-color: #ecd97b;
+  background-color: #a8de00;
 }
 
 .task__answer {
@@ -360,17 +371,16 @@ main {
 }
 
 .tag {
-  font-size: 20px;
   color: #FFF;
   text-decoration: none;
-  background-color: #00000000;
+
 }
 
 .subtitles {
   position: relative;
   display: flex;
   justify-content: center;
-  color: #22223b;
+  color: rgba(0, 0, 0, 0.568);
   margin-top: 75px;
   font-size: 3em;
 }
@@ -378,7 +388,7 @@ main {
 .work {
   margin-top: 50px;
   position: relative;
-  background: #22223b;
+  background: #350436;
   border: 2px solid #000000;
   border-radius: 30px;
   color: black;
@@ -397,23 +407,50 @@ main {
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto;
+<<<<<<< Updated upstream
+=======
+  grid-template-areas:
+    "work__type work__stats"
+    "work__name work__stats";
+}
+.work__description_teacher {
+  background-color: #fff;
+  position: relative;
+  border: 2px solid #000000;
+  border-radius: 28px;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
   grid-template-areas:
     "work__type work__radio"
     "work__name work__radio";
+>>>>>>> Stashed changes
 }
 
 .work__type {
-  grid-area: work__type;
   font-size: 35px;
   line-height: 35px;
   padding: 12px 30px;
 }
 
+<<<<<<< Updated upstream
+=======
 .work__menu {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   grid-area: work__radio;
+}
+
+.work__stats {
+  grid-area: work__stats;
+  display: flex;
+  justify-content: end;
+  font-size: 25px;
+  line-height: 25px;
+  padding: 12px 30px;
+  align-items: center;
 }
 
 .work__edit {
@@ -443,24 +480,23 @@ main {
   background-size: 30px 30px;
 }
 
+>>>>>>> Stashed changes
 .work__name {
-  grid-area: work__name;
   font-size: 25px;
   line-height: 25px;
   padding: 12px 30px;
 }
 
-.work__form {
-  background-color: #22223b;
+.work__form{
+  background-color: #350436;
   border-radius: 28px 28px 28px 28px;
 }
-
 .work__button {
   width: 100%;
   font-weight: 400;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
-  background-color: #ffffff00;
+  background-color: #35043600;
   display: flex;
   justify-content: center;
   font-size: 30px;
@@ -479,7 +515,8 @@ main {
   transform: scale(1.1);
 }
 
-.work__stats {
+<<<<<<< Updated upstream
+.work__stats{
   display: flex;
   justify-content: end;
   font-size: 25px;
@@ -487,7 +524,7 @@ main {
   padding: 12px 30px;
   align-items: center;
 }
-
+=======
 .create {
   position: sticky;
   display: flex;
@@ -621,3 +658,4 @@ main {
 .flash.success {
   color: rgb(255, 63, 63);
  }
+>>>>>>> Stashed changes

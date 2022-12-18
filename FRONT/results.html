@@ -23,7 +23,6 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Имя</th>
                     <th scope="col">Фамилия</th>
                     <th scope="col">Класс</th>
@@ -33,11 +32,10 @@
                 <tbody>
                   {% for student in students %}
                       <tr>
-                        <th scope="row">{{ student['id']}}</th>
-                        <td>{{ student['name']}}</td>
-                        <td>{{ student['surname']}}</td>
-                        <td>{{ student['class']}}</td>
-                        <td class = 'percent'>{{ student['result']}}</td>
+                        <td>{{ student[1]}}</td>
+                        <td>{{ student[2]}}</td>
+                        <td>{{ student[3]}}</td>
+                        <td class = 'percent'>{{ student[4][1]}}%</td>
                       </tr>
                   {% endfor %} 
                 </tbody>

@@ -30,18 +30,18 @@
 
   {% for work in works %}
   <article class="work">
-    <div class="work__description">
-      <div class="work__type">{{ work['type'] }}</div>
-      <div class="work__name">{{ work['name'] }} </div>
+    <div class="work__description_teacher">
+      <div class="work__type">{{ work[2] }}</div>
+      <div class="work__name">{{ work[1] }} </div>
       <div class="work__menu">
-        <form action="/rezults" method="post">
-          <button name="{{work['id']}}" type="submit" class="work__stat"> </button>
+        <form action="/results" method="post">
+          <button name="{{work[0]}}" type="submit" class="work__stat"> </button>
         </form>
         <form action="/send" method="post">
-          <button name="{{work['id']}}" type="submit" class="work__send"> </button>
+          <button name="{{work[0]}}" type="submit" class="work__send"> </button>
         </form>
         <form method="post">
-          <button name="{{work['id']}}" type="submit" class="work__delete"> </button>
+          <button name="{{work[0]}}" type="submit" class="work__delete"> </button>
         </form>
       </div>
     </div>

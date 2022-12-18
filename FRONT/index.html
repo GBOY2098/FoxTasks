@@ -6,64 +6,77 @@
 {% block page_name %}
 Главная
 {% endblock %}
-{% block menu_body %}
-<form method="post" action="/logout">
-  <p><input class="tag" name="logout" type="submit" value="Выйти из аккаунта">
-  <p>
-</form>
-{% endblock %}
+
 {% block body %}
 <div class="container">
-  {% if  works_0 %}
+  {% if not stats['completed'] and not stats['started'] %}
   <h1 class="subtitles">
     Новые
   </h1>
-  {% for work in works_0 %}
   <article class="work">
+<<<<<<< Updated upstream
+      <div class="work__description">
+        <div class="work__type">Проверочная</div>
+        <div class="work__stats"></div>
+        <div class="work__name">практика первых номеров ЕГЭ </div>
+        <div class="work__stats"></div>
+      </div>
+    <form class="work__form" method="POST" action="/work">
+      <button name="start_work" type="submit" class="work__button">Начать работу</button>
+=======
     <div class="work__description">
-      <div class="work__type">{{work["type"]}}</div>
+      <div class="work__type">{{work[1]}}</div>
       <div class="work__stats"></div>
-      <div class="work__name">{{work["name"]}} </div>
-      <div class="work__stats"></div>
+      <div class="work__name">{{work[2]}} </div>
     </div>
     <form class="work__form" method="POST" action="/work">
-      <button name="{{work["id"]*100+99}}" type="submit" class="work__button">Начать работу</button>
+      <button name="{{work[0]*100+99}}" type="submit" class="work__button">Начать работу</button>
+>>>>>>> Stashed changes
     </form>
   </article>
-  {% endfor %}
   {% endif %}
-  {% if  works_1  %}
+  {% if not stats['completed'] and stats['started'] %}
   <h1 class="subtitles">
     Начатые
   </h1>
-  {% for work in works_1 %}
   <article class="work">
     <div class="work__description">
-      <div class="work__type">{{work["type"]}}</div>
-      <div class="work__stats">Правильно {{ work["stats"][0] }} из {{ work["stats"][1] }}</div>
-      <div class="work__name">{{work["name"]}}</div>
-      <div class="work__stats">Это {{ (work["stats"][0] * 100) // work["stats"][1] }}%</div>
+<<<<<<< Updated upstream
+      <div class="work__type">Проверочная</div>
+      <div class="work__stats">Правильно {{ stats['correct'] }} из {{ stats['answers'] }}</div>
+      <div class="work__name">практика первых номеров ЕГЭ </div>
+      <div class="work__stats">Это {{ (stats['correct'] * 100) // stats['answers'] }}%</div>
+    </div>
+    <a class="work__button" href="/work">ПРОДОЛЖИТЬ РАБОТУ</a>
+=======
+      <div class="work__type">{{work[2]}}</div>
+      <div class="work__stats">Выполнено на {{ (work[1])}}%</div>
+      <div class="work__name">{{work[3]}} </div>
     </div>
     <form class="work__form" method="POST" action="/work">
-      <button name="{{work["id"]*100+99}}" type="submit" class="work__button">Продолжить работу</button>
+      <button name="{{work[0]*100+98}}" type="submit" class="work__button">Продолжить работу</button>
     </form>
+>>>>>>> Stashed changes
   </article>
-  {% endfor %}
   {% endif %}
-  {% if  works_2 %}
+  {% if stats['completed'] %}
   <h1 class="subtitles">
     Отправленные
   </h1>
-  {% for work in works_2 %}
   <article class="work">
     <div class="work__description">
-      <div class="work__type">{{work["type"]}}</div>
-      <div class="work__stats">Правильно {{ work["stats"][0] }} из {{ work["stats"][1] }}</div>
-      <div class="work__name">{{work["name"]}} </div>
-      <div class="work__stats">Это {{ (work["stats"][0] * 100) // work["stats"][1] }}%</div>
+<<<<<<< Updated upstream
+      <div class="work__type">Проверочная</div>
+      <div class="work__stats">Правильно {{ stats['correct'] }} из {{ stats['answers'] }}</div>
+      <div class="work__name">практика первых номеров ЕГЭ </div>
+      <div class="work__stats">Это {{ (stats['correct'] * 100) // stats['answers'] }}%</div>
+=======
+      <div class="work__type">{{work[2]}}</div>
+      <div class="work__stats">Выполнено на {{ (work[1])}}%</div>
+      <div class="work__name">{{work[3]}} </div>
+>>>>>>> Stashed changes
     </div>
   </article>
-  {% endfor %}
   {% endif %}
 </div>
 
