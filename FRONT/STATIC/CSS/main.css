@@ -1,16 +1,16 @@
 header {
   position: relative;
   width: 100%;
-  height: 70px;
-  background-color: #aaaaaa;
+  height: 100px;
+  background-color: #4a4e69;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
 
-.body{
-  background-color: #d1d1d1;
+.body {
+  background-color: #f2e9e4;
 }
 
 #side-checkbox {
@@ -22,7 +22,7 @@ header {
   z-index: 999999;
   top: 0;
   left: -360px;
-  background: #350436;
+  background: #22223b;
   transition: all 0.5s;
   width: 320px;
   height: 100vh;
@@ -32,7 +32,7 @@ header {
 }
 
 .side-title {
-  font-size: 20px;
+  font-size: 30px;
   padding-bottom: 10px;
   margin-bottom: 20px;
   border-bottom: 2px solid #BFE2FF;
@@ -59,7 +59,7 @@ header {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
-  background: #350436;
+  background: #22223b;
   cursor: pointer;
   border: 2px solid #010a13;
 }
@@ -83,7 +83,7 @@ header {
 
 .side-button-1 .side-open:after,
 .side-button-1 .side-open:before {
-  background: rgb(66, 28, 116);
+  background: #0d0d3c;
 }
 
 .side-button-1 .side-close:after,
@@ -206,7 +206,7 @@ main {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #000000;
+  color: #fff;
 }
 
 .menu {
@@ -218,19 +218,13 @@ main {
   background-color: white;
 }
 
-.menu__line {
-  height: 15%;
-  width: 100%;
-  background-color: #3c3c3c;
-
-}
 
 .work {
   margin-top: 50px;
   position: relative;
   width: 90%;
   left: 5%;
-  background: #350436;
+  background: #22223b;
   border: 2px solid #000000;
   border-radius: 30px;
   color: black;
@@ -244,7 +238,8 @@ main {
   line-height: 35px;
   padding: 12px 30px;
 }
-.work__name{
+
+.work__name {
   font-size: 25px;
   line-height: 25px;
   padding: 12px 30px;
@@ -263,9 +258,9 @@ main {
 
 .task {
   position: relative;
-  border: 2.5px solid black;
+  border: 0px solid black;
   border-radius: 30px;
-  background: #350436;
+  background: #22223b;
   margin-top: 100px;
 }
 
@@ -286,7 +281,7 @@ main {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
-  background: #350436;
+  background: #22223b;
   border-radius: 0px 0px 28px 28px;
 }
 
@@ -313,7 +308,7 @@ main {
 .end {
   font-size: 2em;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .end__button {
@@ -322,7 +317,7 @@ main {
   font-weight: bold;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
-  background: #350436;
+  background: #22223b;
   cursor: pointer;
   border: 2px solid #010a13;
   text-decoration: none;
@@ -333,15 +328,15 @@ main {
 }
 
 .correct {
-  background-color: #2db32d;
+  background-color: #5fd579;
 }
 
 .incorrect {
-  background-color: #fc4048;
+  background-color: #f34e56;
 }
 
 .undone {
-  background-color: #a8de00;
+  background-color: #ecd97b;
 }
 
 .task__answer {
@@ -350,16 +345,17 @@ main {
 }
 
 .tag {
+  font-size: 20px;
   color: #FFF;
   text-decoration: none;
-
+  background-color: #00000000;
 }
 
 .subtitles {
   position: relative;
   display: flex;
   justify-content: center;
-  color: rgba(0, 0, 0, 0.568);
+  color: #22223b;
   margin-top: 75px;
   font-size: 3em;
 }
@@ -367,7 +363,7 @@ main {
 .work {
   margin-top: 50px;
   position: relative;
-  background: #350436;
+  background: #22223b;
   border: 2px solid #000000;
   border-radius: 30px;
   color: black;
@@ -405,6 +401,7 @@ main {
 }
 
 .work__type {
+  grid-area: work__type;
   font-size: 35px;
   line-height: 35px;
   padding: 12px 30px;
@@ -455,21 +452,23 @@ main {
 }
 
 .work__name {
+  grid-area: work__name;
   font-size: 25px;
   line-height: 25px;
   padding: 12px 30px;
 }
 
-.work__form{
-  background-color: #350436;
+.work__form {
+  background-color: #22223b;
   border-radius: 28px 28px 28px 28px;
 }
+
 .work__button {
   width: 100%;
   font-weight: 400;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', Tahoma, sans-serif;
-  background-color: #35043600;
+  background-color: #ffffff00;
   display: flex;
   justify-content: center;
   font-size: 30px;

@@ -6,13 +6,19 @@
 {% block page_name %}
 Главная
 {% endblock %}
-
+{% block menu_body %}
+<form method="post" action="/logout">
+  <p><input class="tag" name="logout" type="submit" value="Выйти из аккаунта">
+  <p>
+</form>
+{% endblock %}
 {% block body %}
 <div class="container">
-  {% if not stats['completed'] and not stats['started'] %}
+  {% if  works_0 %}
   <h1 class="subtitles">
     Новые
   </h1>
+  {% for work in works_0 %}
   <article class="work">
     <div class="work__description">
       <div class="work__type">{{work[1]}}</div>
@@ -23,11 +29,13 @@
       <button name="{{work[0]*100+99}}" type="submit" class="work__button">Начать работу</button>
     </form>
   </article>
+  {% endfor %}
   {% endif %}
-  {% if not stats['completed'] and stats['started'] %}
+  {% if  works_1  %}
   <h1 class="subtitles">
     Начатые
   </h1>
+  {% for work in works_1 %}
   <article class="work">
     <div class="work__description">
       <div class="work__type">{{work[2]}}</div>
@@ -38,11 +46,13 @@
       <button name="{{work[0]*100+98}}" type="submit" class="work__button">Продолжить работу</button>
     </form>
   </article>
+  {% endfor %}
   {% endif %}
-  {% if stats['completed'] %}
+  {% if  works_2 %}
   <h1 class="subtitles">
     Отправленные
   </h1>
+  {% for work in works_2 %}
   <article class="work">
     <div class="work__description">
       <div class="work__type">{{work[2]}}</div>
@@ -50,6 +60,7 @@
       <div class="work__name">{{work[3]}} </div>
     </div>
   </article>
+  {% endfor %}
   {% endif %}
 </div>
 

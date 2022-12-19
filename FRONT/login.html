@@ -12,29 +12,21 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="icon" href="./STATIC/Icons/favicon.ico">
-  <title>{% block title %}{% endblock %}</title>
+  <title>Вход</title>
 </head>
 
 <body class="body">
-  <header>
-    <div class="side-button-1-wr">
-      <label class="side-button-1" for="side-checkbox">
-        <div class="side-b side-open">Меню</div>
-      </label>
-    </div>
-    <div class="page_name">
-      {% block page_name %}{% endblock %}
-    </div>
-  </header>
-  <main>
-    <input type="checkbox" id="side-checkbox" />
-    <div class="side-panel">
-      <label class="side-button-2" for="side-checkbox">+</label>
-      <div class="side-title">Меню:</div>
-      {% block menu_body %}{% endblock %}
-    </div>
-  </main>
-  {% block body %}{% endblock %}
+      <div class="login__container">
+          <h1 class="login__title" > Вход </h1>
+          <form class="login__form"  method="post">
+            <input name="log" class="login__input" type="text" placeholder="Логин" >
+            <input  name="pas" class="login__input" type="password" placeholder="Пароль" >
+            {% for category, message in get_flashed_messages(True) %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+            <input name="enter" class="login__button" type="submit" value="Далее" >
+          </form>
+      </div> 
 </body>
-{% block code %}{% endblock %}
+
 </html>

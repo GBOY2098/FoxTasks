@@ -7,7 +7,13 @@
 {% block page_name %}
 Выполнение работы
 {% endblock %}
-
+{% block menu_body %}
+<p><a class="tag" href="/menu">Главная</a></p>
+<form method="post" action="/logout">
+  <p><input class="tag" name="logout" type="submit" value="Выйти из аккаунта">
+  <p>
+</form>
+{% endblock %}
 {% block body %}
 <div class="container">
   {% for i in range(len(tasks)) %}
@@ -31,8 +37,7 @@
     {% endif %}
     {% if tasks[i][3] == 2 %}
       undone
-    {% endif %}"
-    method="POST">
+    {% endif %}" method="POST">
       Ответ:
       <input name={{ i }} class="task__answer" {% if tasks[i][3]==1 or tasks[i][3]==2 %} disabled
         {% endif %} type="text" placeholder="Введите ответ" value={{ tasks[i][2] }}>
@@ -41,8 +46,8 @@
     </form>
   </article>
   {% endfor %}
-  <form class="end" method="POST" action="/">
-    <input name="end_work" value="Завершить работу" type="submit" class="end__button"></input>
+  <form class="end" method="POST" action="/menu">
+    <input name="{{id}}" value="Завершить работу" type="submit" class="end__button"></input>
   </form>
   <br>
 </div>

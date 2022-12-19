@@ -7,7 +7,7 @@ from Database import WorksDB, DataDB
 import os.path
 
 
-tasks_upload_folder = './FoxTasks/FRONT/STATIC/Tasks/'
+tasks_upload_folder = './FRONT/STATIC/Tasks/'
 allowed_tasks_extensions = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'raw', 'tiff', 'jp2'}
 
 
@@ -70,6 +70,7 @@ def menu():
     return render_template('index.html', works_0=works_new,works_1=works_started,works_2=works_ended)
 
 @app.route("/work", methods=['POST', 'GET'])
+@login_required
 def work():
     userid = current_user.get_id()
     if userid == 'teacher':
@@ -177,6 +178,10 @@ def results():
             students = dataDB.getDoneStud(id)
     return render_template('results.html', students=students)
 
+@app.route("/logout", methods=['POST', 'GET'])
+def logout():
+    logout_user()
+    return redirect("http://127.0.0.1:5000/")
 
 if __name__ == '__main__':
     worksDB, dataDB = WorksDB(), DataDB()
