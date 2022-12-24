@@ -188,6 +188,12 @@ def registration():
     
     return render_template('registration.html', )
 
+@app.route("/studentsedit", methods=['POST', 'GET'])
+@login_required
+def studentsedit():
+    students = [['id', 'Имя', 'Фамилия', 'Логин','Пароль','Класс'] for _ in range(100)]
+    return render_template('studentsedit.html', students=students, int=int)
+
 if __name__ == '__main__':
     worksDB, dataDB = WorksDB(), DataDB()
     # dataDB.addStudent('denis', 'Денис', 'Супер', '11Г', '12341234')
