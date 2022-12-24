@@ -24,6 +24,7 @@
             {% for category, message in get_flashed_messages(True) %}
               <div class="flash {{ category }}">{{ message }}</div>
             {% endfor %}
+            <a class="r__link" href="/registration"> У меня нет аккаунта</a>
             <input name="enter" class="login__button" type="submit" value="Далее" >
           </form>
       </div> 

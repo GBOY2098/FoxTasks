@@ -183,7 +183,14 @@ def logout():
     logout_user()
     return redirect("http://127.0.0.1:5000/")
 
+@app.route("/registration", methods=['POST', 'GET'])
+def registration():
+    
+    return render_template('registration.html', )
+
 if __name__ == '__main__':
     worksDB, dataDB = WorksDB(), DataDB()
     # dataDB.addStudent('denis', 'Денис', 'Супер', '11Г', '12341234')
     app.run()
+
+

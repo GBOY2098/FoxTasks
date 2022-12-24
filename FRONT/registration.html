@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="1.png" type="image/x-icon">
+  <link rel="stylesheet" href="STATIC/CSS/zero.css">
+  <link rel="stylesheet" href="STATIC/CSS/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="icon" href="./STATIC/Icons/favicon.ico">
+  <title>Регистрация</title>
+</head>
+
+<body class="body">
+      <div class="login__container">
+          <h1 class="login__title" > Регистрация </h1>
+          <form class="login__form"  method="post">
+            <input  name="name" class="login__input" type="text" placeholder="Имя" >
+            <input  name="surname" class="login__input" type="text" placeholder="Фамилия" >
+            <input name="log" class="login__input" type="email" placeholder="Почта (Логин)" >
+            <input  name="pas" class="login__input" type="password" placeholder="Пароль" >
+            <input  name="pas" class="login__input" type="password" placeholder="Повторите пароль" >
+            <input  name="grade" class="login__input" type="number" placeholder="Класс" >
+            <input  name="letter" class="login__input" type="text" placeholder="Буква"  >
+            <!-- {% for category, message in get_flashed_messages(True) %} -->
+              <!-- <div class="flash {{ category }}">{{ message }}</div> -->
+            <!-- {% endfor %} -->
+            <a class="r__link" href="/login">У меня уже есть аккаунт</a>
+            <input name="enter" class="login__button" type="submit" value="Зарегистрироваться!" >
+          </form>
+      </div> 
+</body>
+
+</html>

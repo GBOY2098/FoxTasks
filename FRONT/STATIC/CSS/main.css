@@ -620,3 +620,10 @@ main {
 .flash.success {
   color: rgb(255, 63, 63);
  }
+
+.r__link{
+  font-size: 20px;
+  margin-top: 5px;
+  text-decoration: none;
+  color: #4610e9;
+}
