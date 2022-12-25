@@ -285,6 +285,18 @@ main {
   border-radius: 0px 0px 28px 28px;
 }
 
+.task__file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 27px;
+  line-height: 20px;
+  padding: 12px 30px;
+  text-decoration: none;
+  color: #FFF;
+}
+
 .task__button {
   font-size: 20px;
   line-height: 20px;
@@ -386,6 +398,7 @@ main {
     "work__type work__stats"
     "work__name work__stats";
 }
+
 .work__description_teacher {
   background-color: #fff;
   position: relative;
@@ -444,7 +457,8 @@ main {
   background: url("../Icons/send.svg") no-repeat;
   background-size: 30px 30px;
 }
-.work__delete{
+
+.work__delete {
   width: 60px;
   height: 30px;
   background: url("../Icons/trash.svg") no-repeat;
@@ -508,7 +522,7 @@ main {
   line-height: 30px;
 }
 
-.work__settings{
+.work__settings {
   margin-top: 50px;
   display: flex;
   justify-content: space-around;
@@ -520,28 +534,28 @@ main {
   border-radius: 7px;
   border: 2px solid #000000;
   padding: 5px;
-  background-color: #f2e9e4 ;
+  background-color: #f2e9e4;
   border: 2px solid #000000;
   border-radius: 5px;
-  
+
 }
 
-.work__grade__select{
-  background-color: #f2e9e4 ;
+.work__grade__select {
+  background-color: #f2e9e4;
   padding-left: 10px;
   border: 2px solid #000000;
   border-radius: 5px;
-  
+
 }
 
-.work__type__select{  
-  background-color: #f2e9e4 ;
+.work__type__select {
+  background-color: #f2e9e4;
   padding-left: 5px;
   border: 2px solid #000000;
   border-radius: 5px;
 }
 
-.work__settings__titles{
+.work__settings__titles {
   margin-top: 50px;
   position: relative;
   display: flex;
@@ -549,7 +563,7 @@ main {
   font-size: 35px;
 }
 
-.work__settings__task__adding{
+.work__settings__task__adding {
   margin-top: 25px;
   position: relative;
   display: flex;
@@ -559,29 +573,29 @@ main {
 }
 
 
-.work__settings__answer__adding{
+.work__settings__answer__adding {
   padding-left: 5px;
   background-color: #f2e9e4;
   border: #000000 solid 2px;
 }
 
-.add__work{
-  
+.add__work {
+
   display: block;
   margin-top: 10px;
   font-size: 20px;
   font-family: sans-serif;
 }
 
-.delete__work{
-  
+.delete__work {
+
   display: block;
   margin-top: 10px;
   font-size: 20px;
   font-family: sans-serif;
 }
 
-.login__container{
+.login__container {
   display: flex;
   flex-direction: column;
   height: 80%;
@@ -589,13 +603,14 @@ main {
   background-color: #f2e9e4;
   justify-content: center;
 }
-.login__form{
+
+.login__form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.login__input{
+.login__input {
   margin-top: 20px;
   background-color: #f2e9e4;
   padding-left: 5px;
@@ -603,7 +618,7 @@ main {
   border: 2px #A9A9A9 solid;
 }
 
-.login__button{
+.login__button {
   font-size: 25px;
   margin-top: 15px;
   background-color: #87CEEB;
@@ -614,14 +629,16 @@ main {
 .flash {
   padding: 10px;
 }
+
 .flash.success {
- color: rgb(47, 145, 47);
+  color: rgb(47, 145, 47);
 }
+
 .flash.success {
   color: rgb(255, 63, 63);
- }
+}
 
-.r__link{
+.r__link {
   font-size: 20px;
   margin-top: 5px;
   text-decoration: none;

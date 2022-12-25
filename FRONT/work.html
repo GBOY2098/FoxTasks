@@ -28,6 +28,7 @@
     undone
   {% endif %}">
     <img class="task__photo" src={{ tasks[i][0] }} alt="Missing image">
+    <a class="task__file" href="/STATIC/Tasks/t0e0.jpg" download="">скачать файл</a>
     <form class="form 
     {% if tasks[i][3] == 1 %}
       correct
@@ -39,8 +40,8 @@
       undone
     {% endif %}" method="POST">
       Ответ:
-      <input name={{ i }} class="task__answer" {% if tasks[i][3]==1 or tasks[i][3]==2 %} disabled
-        {% endif %} type="text" placeholder="Введите ответ" value={{ tasks[i][2] }}>
+      <input name={{ i }} class="task__answer" {% if tasks[i][3]==1 or tasks[i][3]==2 %} disabled {% endif %}
+        type="text" placeholder="Введите ответ" value={{ tasks[i][2] }}>
       <input type="submit" name="{{id*100+99}}" {% if tasks[i][3]==1 or tasks[i][3]==2 %} disabled {% endif %}
         class="task__button" value="Отправить"></input>
     </form>

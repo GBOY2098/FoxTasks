@@ -16,18 +16,18 @@
 </head>
 
 <body class="body">
-      <div class="login__container">
-          <h1 class="login__title" > Вход </h1>
-          <form class="login__form"  method="post">
-            <input name="log" class="login__input" type="text" placeholder="Логин" >
-            <input  name="pas" class="login__input" type="password" placeholder="Пароль" >
-            {% for category, message in get_flashed_messages(True) %}
-              <div class="flash {{ category }}">{{ message }}</div>
-            {% endfor %}
-            <a class="r__link" href="/registration"> У меня нет аккаунта</a>
-            <input name="enter" class="login__button" type="submit" value="Далее" >
-          </form>
-      </div> 
+  <div class="login__container">
+    <h1 class="login__title"> Вход </h1>
+    <form class="login__form" method="post">
+      <input name="log" class="login__input" required type="text" placeholder="Логин">
+      <input name="pas" class="login__input" required type="password" placeholder="Пароль">
+      {% for category, message in get_flashed_messages(True) %}
+      <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+      <a class="r__link" href="/registration"> У меня нет аккаунта</a>
+      <input name="enter" class="login__button" type="submit" value="Далее">
+    </form>
+  </div>
 </body>
 
 </html>

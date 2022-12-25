@@ -3,18 +3,23 @@ var i=1;
 function addWorkSettings(x){
   const form_el = document.createElement("div")
   form_el.classList.add("work__settings__task__adding")
-  const task_input_filr_el = document.createElement("input")
-  task_input_filr_el.classList.add("work__settings__file__adding")
+  const task_input_file_el = document.createElement("input")
+  task_input_file_el.classList.add("work__settings__file__adding")
+  const task_input_image_el = document.createElement("input")
+  task_input_image_el.classList.add("work__settings__file__adding")
   form_el.method ="post"
-  task_input_filr_el.type="file"
-  task_input_filr_el.accept="image/*"
+  task_input_file_el.type="file"
+  task_input_image_el.type="file"
+  task_input_image_el.accept="image/*"
   const task_input_answer_el=document.createElement("input")
   task_input_answer_el.classList.add("work__settings__answer__adding")
   task_input_answer_el.type = ("text")
   task_input_answer_el.placeholder =("Предполагаемый ответ")
   task_input_answer_el.name= ("answer"+x.toString(10))
-  task_input_filr_el.name= ("file"+x.toString(10))
-  form_el.appendChild(task_input_filr_el)
+  task_input_file_el.name= ("file"+x.toString(10))
+  task_input_image_el.name= ("image"+x.toString(10))
+  form_el.appendChild(task_input_image_el)
+  form_el.appendChild(task_input_file_el)
   form_el.appendChild(task_input_answer_el)
   list_el.appendChild(form_el)
 }

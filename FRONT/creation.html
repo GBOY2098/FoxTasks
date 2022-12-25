@@ -22,35 +22,37 @@
 <form method="post" action="/logout">
     <p><input class="tag" name="logout" type="submit" value="Выйти из аккаунта">
     <p>
-  </form>
+</form>
 {% endblock %}
 {% block body %}
 <div class="container">
     <form action="/teacher" id="for" method="post" enctype=multipart/form-data>
         <div class="work__settings">
-        <input name="name" class="work__settings__name" placeholder="Введите название работы" required size=30
-            type="text">
-        <select class="work__grade__select" name="grade">
-            <option value="7">7 класс</option>
-            <option value="8">8 класс</option>
-            <option value="9">9 класс</option>
-            <option value="10">10 класс</option>
-            <option value="11" selected>11 класс</option>
-        </select>
-        <select class="work__type__select" name="type">
-            <option value="ПРАКТИЧЕСКАЯ">Практическая работа</option>
-            <option value="САМОСТОЯТЕЛЬНАЯ" selected>Самостоятельная работа</option>
-            <option value="КОНТРОЛЬНАЯ">Контрольная работа</option>
-        </select>
+            <input name="name" class="work__settings__name" placeholder="Введите название работы" required size=30
+                type="text">
+            <select class="work__grade__select" name="grade">
+                <option value="7">7 класс</option>
+                <option value="8">8 класс</option>
+                <option value="9">9 класс</option>
+                <option value="10">10 класс</option>
+                <option value="11" selected>11 класс</option>
+            </select>
+            <select class="work__type__select" name="type">
+                <option value="ПРАКТИЧЕСКАЯ">Практическая работа</option>
+                <option value="САМОСТОЯТЕЛЬНАЯ" selected>Самостоятельная работа</option>
+                <option value="КОНТРОЛЬНАЯ">Контрольная работа</option>
+            </select>
         </div>
         <div class="work__settings__titles">
             <p>Задания:</p>
+            <p>Файл:</p>
             <p>Ответы:</p>
         </div>
         <div class="con">
             <div class="work__settings__task__adding">
-                <input  name="file0" class="work__settings__file__adding" type="file" required accept="image/*">
-                <input  name="answer0" class="work__settings__answer__adding" required type="text"
+                <input name="image0" class="work__settings__file__adding" type="file" required accept="image/*">
+                <input name="file0" class="work__settings__file__adding" type="file" accept="image/*">
+                <input name="answer0" class="work__settings__answer__adding" required type="text"
                     placeholder="Предполагаемый ответ">
             </div>
         </div>

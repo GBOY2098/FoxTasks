@@ -115,7 +115,7 @@ def teacher():
     post=list(request.form.keys())
     if request.method == 'POST':
         if post[0]=="create":
-            return redirect("http://127.0.0.1:5000/creation", code=302)
+            return redirect("http://127.0.0.1:5000/creation")
         elif post[-1]=='create_work':
             grade=int(request.form["grade"])
             workid = time()
@@ -134,15 +134,18 @@ def teacher():
         elif post[0][-1]=="c":
             grade=int(post[0][:-1:])
         elif post[0].isdigit():
+            grade = worksDB.getFormById(int(post[0]))
             worksDB.delWork(int(post[0]))
-        elif post[0] == 'home':
-            grade = 7
+        elif post[0][:4] == 'home':
+            id=int(post[0][4:])
+            grade = worksDB.getFormById(id)
         elif int(post[-1]) % 100 == 99:
             id = int(post[-1]) // 100
             if len(post)>1:
                 selected=post[:-1:]
             else:
                 selected=[]
+            grade = worksDB.getFormById(id)
             dataDB.addNewWork(id, selected)
     works = worksDB.getFormWorks(grade)
     return render_template('teacher.html', works=works)
@@ -176,7 +179,7 @@ def results():
             id=list(request.form.keys())[0]
 
             students = dataDB.getDoneStud(id)
-    return render_template('results.html', students=students)
+    return render_template('results.html', id=id, students=students, str=str)
 
 @app.route("/logout", methods=['POST', 'GET'])
 def logout():
@@ -185,12 +188,22 @@ def logout():
 
 @app.route("/registration", methods=['POST', 'GET'])
 def registration():
-    
+    if request.method == 'POST':
+        
+        return redirect("http://127.0.0.1:5000/")
     return render_template('registration.html', )
 
 @app.route("/studentsedit", methods=['POST', 'GET'])
 @login_required
 def studentsedit():
+    if current_user.get_id() != 'teacher':
+        return redirect("http://127.0.0.1:5000/")
+    post=list(request.form.keys())
+    if request.method == 'POST':
+        if len(post)>1:
+            selected=post[:-1:]
+        else:
+            selected=[]
     students = [['id', 'Имя', 'Фамилия', 'Логин','Пароль','Класс'] for _ in range(100)]
     return render_template('studentsedit.html', students=students, int=int)
 

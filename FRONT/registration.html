@@ -16,23 +16,23 @@
 </head>
 
 <body class="body">
-      <div class="login__container">
-          <h1 class="login__title" > Регистрация </h1>
-          <form class="login__form"  method="post">
-            <input  name="name" class="login__input" type="text" placeholder="Имя" >
-            <input  name="surname" class="login__input" type="text" placeholder="Фамилия" >
-            <input name="log" class="login__input" type="email" placeholder="Почта (Логин)" >
-            <input  name="pas" class="login__input" type="password" placeholder="Пароль" >
-            <input  name="pas" class="login__input" type="password" placeholder="Повторите пароль" >
-            <input  name="grade" class="login__input" type="number" placeholder="Класс" >
-            <input  name="letter" class="login__input" type="text" placeholder="Буква"  >
-            <!-- {% for category, message in get_flashed_messages(True) %} -->
-              <!-- <div class="flash {{ category }}">{{ message }}</div> -->
-            <!-- {% endfor %} -->
-            <a class="r__link" href="/login">У меня уже есть аккаунт</a>
-            <input name="enter" class="login__button" type="submit" value="Зарегистрироваться!" >
-          </form>
-      </div> 
+  <div class="login__container">
+    <h1 class="login__title"> Регистрация </h1>
+    <form class="login__form" method="post">
+      <input name="name" required class="login__input" type="text" placeholder="Имя">
+      <input name="surname" required class="login__input" type="text" placeholder="Фамилия">
+      <input name="log" required class="login__input" type="email" placeholder="Почта (Логин)">
+      <input name="pas" required class="login__input" type="password" placeholder="Пароль">
+      <input name="pas" required class="login__input" type="password" placeholder="Повторите пароль">
+      <input name="grade" required class="login__input" type="number" placeholder="Класс">
+      <input name="letter" required class="login__input" type="text" placeholder="Буква">
+      <!-- {% for category, message in get_flashed_messages(True) %} -->
+      <!-- <div class="flash {{ category }}">{{ message }}</div> -->
+      <!-- {% endfor %} -->
+      <a class="r__link" href="/login">У меня уже есть аккаунт</a>
+      <input name="enter" class="login__button" type="submit" value="Зарегистрироваться!">
+    </form>
+  </div>
 </body>
 
 </html>
