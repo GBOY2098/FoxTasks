@@ -45,7 +45,8 @@ def login():
     if request.method == 'POST':
         post = list(request.form.keys())[2]
         user = {'username': request.form['log']}
-        if post == 'enter' and dataDB.checkPass(user['username'], request.form['pas']):
+        print(user['username'])
+        if post == 'enter' and dataDB.checkStudent(user['username']) and dataDB.checkPass(user['username'], request.form['pas']):
             userlogin = UserLogin().create(user)
             login_user(userlogin)
             if request.form["log"] == "teacher":
