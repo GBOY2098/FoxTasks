@@ -38,9 +38,9 @@ def home():
 def login():
     if current_user.get_id():
         if current_user.get_id() == 'teacher':
-            return redirect("http://127.0.0.1:5000/teacher")
+            return redirect(url_for("teacher"))
         else:
-            return redirect("http://127.0.0.1:5000/menu")
+            return redirect(url_for("menu"))
 
     if request.method == 'POST':
         post = list(request.form.keys())[2]
@@ -49,17 +49,18 @@ def login():
             userlogin = UserLogin().create(user)
             login_user(userlogin)
             if request.form["log"] == "teacher":
-                return redirect("http://127.0.0.1:5000/teacher")
+                return redirect(url_for("teacher"))
             else:
-                return redirect("http://127.0.0.1:5000/menu")
+                return redirect(url_for("menu"))
         flash(message='Ошибка авторизации. Проверьте корректность введенных данных.', category='error')
     return render_template('login.html', )
+
 
 @app.route("/menu", methods=['POST', 'GET'])
 @login_required
 def menu():
     if current_user.get_id() == 'teacher':
-        return redirect("http://127.0.0.1:5000/")
+        return redirect("/")
     if request.method == 'POST':
         id=int(list(request.form.keys())[0])
         dataDB.fromInToDone(current_user.get_id(), id)
@@ -69,12 +70,13 @@ def menu():
     works_ended=dataDB.getDoneWorks(current_user.get_id())
     return render_template('index.html', works_0=works_new,works_1=works_started,works_2=works_ended)
 
+
 @app.route("/work", methods=['POST', 'GET'])
 @login_required
 def work():
     userid = current_user.get_id()
     if userid == 'teacher':
-        return redirect("http://127.0.0.1:5000/")
+        return redirect("/")
 
     if request.method == 'POST':
         post = list(request.form.keys())
@@ -108,16 +110,17 @@ def work():
         print(tasks)
     return render_template('work.html', id=id, tasks=tasks, range=range, len=len)
 
+
 @app.route("/teacher", methods=['POST', 'GET'])
 @login_required
 def teacher():
     if current_user.get_id() != 'teacher':
-        return redirect("http://127.0.0.1:5000/")
+        return redirect("/")
     grade=7
     post=list(request.form.keys())
     if request.method == 'POST':
         if post[0]=="create":
-            return redirect("http://127.0.0.1:5000/creation")
+            return redirect(url_for("creation"))
         elif post[-1]=='create_work':
             grade=int(request.form["grade"])
             workid = time()
@@ -173,14 +176,15 @@ def teacher():
 @login_required
 def creation():
     if current_user.get_id() != 'teacher':
-        return redirect("http://127.0.0.1:5000/")
+        return redirect("/")
     return render_template('creation.html', )
+
 
 @app.route("/send", methods=['POST', 'GET'])
 @login_required
 def send():
     if current_user.get_id() != 'teacher':
-        return redirect("http://127.0.0.1:5000/")
+        return redirect("/")
     if request.method == 'POST':
         if list(request.form.keys())[0].isdigit():
             id=list(request.form.keys())[0]
@@ -188,11 +192,12 @@ def send():
             students = dataDB.getNumFormStudents(worksDB.getFormById(id))
     return render_template('send.html', students=students, id=id, int=int)
 
+
 @app.route("/results", methods=['POST', 'GET'])
 @login_required
 def results():
     if current_user.get_id() != 'teacher':
-        return redirect("http://127.0.0.1:5000/")
+        return redirect("/")
     if request.method == 'POST':
         if list(request.form.keys())[0].isdigit():
             id=list(request.form.keys())[0]
@@ -200,35 +205,36 @@ def results():
             students = dataDB.getDoneStud(id)
     return render_template('results.html', id=id, students=students, str=str)
 
+
 @app.route("/logout", methods=['POST', 'GET'])
 def logout():
     logout_user()
-    return redirect("http://127.0.0.1:5000/")
+    return redirect("/")
+
 
 @app.route("/registration", methods=['POST', 'GET'])
 def registration():
     if request.method == 'POST':
         
-        return redirect("http://127.0.0.1:5000/")
+        return redirect("/")
     return render_template('registration.html', )
+
 
 @app.route("/studentsedit", methods=['POST', 'GET'])
 @login_required
 def studentsedit():
     if current_user.get_id() != 'teacher':
-        return redirect("http://127.0.0.1:5000/")
+        return redirect("/")
     post=list(request.form.keys())
     if request.method == 'POST':
-        if len(post)>1:
-            selected=post[:-1:]
+        if len(post) > 1:
+            selected = post[:-1]
         else:
             selected=[]
     students = [['id', 'Имя', 'Фамилия', 'Логин','Пароль','Класс'] for _ in range(100)]
     return render_template('studentsedit.html', students=students, int=int)
 
+
 if __name__ == '__main__':
     worksDB, dataDB = WorksDB(), DataDB()
-    # dataDB.addStudent('denis', 'Денис', 'Супер', '11Г', '12341234')
-    app.run()
-
-
+    app.run(host=input('Enter machine IP > '), port=80)

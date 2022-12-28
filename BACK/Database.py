@@ -126,7 +126,6 @@ class DataDB:
             self.cur.execute(f'UPDATE students SET inprogress="{newset}" WHERE userid="{x[0]}"')
             self.db.commit()
 
-
     def getFullFormStudents(self, form):
         number, letter = form[:-1], form[-1]
         students = self.cur.execute(f'SELECT list FROM forms WHERE number="{number}" AND letter="{letter}"').fetchone()
@@ -326,9 +325,11 @@ class DataDB:
             list TEXT);''')
         self.db.commit()
 
+
 def passHashing(password):
     salt = bcrypt.gensalt()
     return bcrypt.hashpw(password.encode(), salt)
+
 
 def checkPassword(password, hashed_password):
     return bcrypt.checkpw(password.encode(), hashed_password)
@@ -337,25 +338,6 @@ def checkPassword(password, hashed_password):
 if __name__ == '__main__':
     a = WorksDB()
     b = DataDB()
-    # a.delWork(1)
-    # print(a.getTasks(3))
-    # print(b.getStudents())
-    # b.addStudent('teacher', 'Учитель', 'Учительский', '99卐', 'Fox')
-    # a.addWork('Тест 1', 10, 'ТЕСТ', ['/STATIC/Tasks/t0e0.jpg', '/STATIC/Tasks/t0e1.jpg', '/STATIC/Tasks/t0e2.jpg'], [1, 2, 3])
-    # a.addWork('Контрольная 1', 10, 'КОНТРОЛЬНАЯ', ['/STATIC/Tasks/t0e0.jpg', '/STATIC/Tasks/t0e1.jpg', '/STATIC/Tasks/t0e2.jpg'], [1, 2, 3], [['path1', 'path2'], [], ['path3']])
+    b.addStudent('teacher', 'Учитель', 'Учительский', '99卐', 'Fox')
     # b.addStudent('deniskairiska', 'Дмитрий', 'Суперский', '10И', 'kek')
     # b.addStudent('supernagibatel', 'Кирилл', 'Мефодьевич', '10И', 'kek1')
-    # b.addNewWork(3, ['deniskairiska', 'supernagibatel'])
-    # b.fromInToDone('deniskairiska', 1)
-    # b.fromInToDone('supernagibatel', 1)
-    # b.addNewWork(2, ['supernagibatel'])
-    # b.fromNewToIn('deniskairiska', 1)
-    # b.delInWork(1, 'deniskairiska')
-    # b.addInAnsw('deniskairiska', 1, 1, 1, 2)
-    # b.fromInToDone('deniskairiska', '1')
-    # print(b.getNewWorks('supernagibatel'))
-    # print(b.getStudentsOfWork(2))
-    # b.addNewWork(1, ['supernagibatel'])
-    # print(b.getDoneStud(1))
-    # <id>:<progress>:[39820卐0卍25493卐1卍3523452卐2]
-    # b.delStudent('supernagibatel')
