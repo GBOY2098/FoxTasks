@@ -8,7 +8,7 @@ class WorksDB:
         self.name = name
         self.dbCreation()
 
-    def addWork(self, workname, workform, worktype, images, rightansw, filepath=[]):
+    def addWork(self, workname, workform, worktype, images, rightansw, filepath):
         try:
             workid = self.cur.execute('SELECT workid FROM info ORDER BY workid DESC LIMIT 1').fetchone()[0]
             self.cur.execute(f'''CREATE TABLE IF NOT EXISTS "{workid + 1}" (
@@ -16,9 +16,9 @@ class WorksDB:
                 rightansw TEXT NOT NULL,
                 filepath TEXT);''')
             while len(filepath) < len(images):
-                filepath.append('')
+                filepath.append([])
             for i in range(len(images)):
-                self.cur.execute(f'INSERT INTO "{workid + 1}" VALUES (?, ?, ?)', (images[i], rightansw[i], filepath[i]))
+                self.cur.execute(f'INSERT INTO "{workid + 1}" VALUES (?, ?, ?)', (images[i], rightansw[i], ';'.join(filepath[i])))
             self.cur.execute(f'INSERT INTO info VALUES (?, ?, ?, ?)', (workid + 1, workname, worktype, workform))
             self.db.commit()
             print(f'Work {workid + 1}:{workname} | Created successfully')
@@ -29,25 +29,25 @@ class WorksDB:
         try:
             workname = self.cur.execute(f'SELECT workname FROM info WHERE workid="{workid}"').fetchone()[0]
             self.cur.execute(f'DELETE FROM info WHERE workid="{workid}"')
-            self.cur.execute(f'DROP TABLE "{workid}"')
+            self.cur.execute(f'DROP TABLE IF EXISTS "{workid}"')
             self.db.commit()
 
             users = DataDB().cur.execute('SELECT userid FROM students WHERE userid!="teacher"').fetchall()
             for x in users:
-                DataDB().cur.execute(f'DROP TABLE "{x[0]}-{workid}"')
+                DataDB().cur.execute(f'DROP TABLE IF EXISTS "{x[0]}-{workid}"')
             DataDB().delNewWorks(workid)
             DataDB().delDoneWorks(workid)
             DataDB().delInWorks(workid)
             
             print(f'Work {workid}:{workname} | Deleted successfully')
         except Exception as error:
-            print(f'Work {workid}:{workname} | Returned an error {error}')
+            print(f'Work {workid} | Returned an error {error}')
 
     def getFormById(self, workid):
         return self.cur.execute(f'SELECT workform FROM info WHERE workid="{workid}"').fetchone()[0]
 
     def getTasks(self, workid):
-        return list(map(list, self.cur.execute(f'SELECT imagepath,rightansw FROM "{workid}"').fetchall()))
+        return [[x[0], x[1], x[2].split(';')] for x in self.cur.execute(f'SELECT imagepath,rightansw,filepath FROM "{workid}"').fetchall()]
 
     def getFormWorks(self, form):
         return self.cur.execute(f'SELECT workid,workname,worktype FROM info WHERE workform="{form}"').fetchall()
@@ -87,6 +87,23 @@ class DataDB:
             print(f'Student {userid}:{name}-{surname} | Student created successfully')
         except Exception as error:
             print(f'Student {userid}:{name}-{surname} | Returned an error while student creation')
+
+    def checkStudent(self, userid):
+        return str(userid) in [x[0] for x in self.cur.execute('SELECT userid FROM students')]
+
+    def delStudent(self, userid):
+        if userid == 'teacher' or userid not in [x[0] for x in self.cur.execute('SELECT userid FROM students').fetchall()]:
+            return
+        form = self.cur.execute(f'SELECT form FROM students WHERE userid="{userid}"').fetchone()[0]
+        self.cur.execute(f'DELETE FROM students WHERE userid="{userid}"')
+        lst = self.cur.execute(f'SELECT list FROM forms WHERE list LIKE "%{userid}%"').fetchone()
+        self.cur.execute(f'UPDATE forms SET list="{",".join([x for x in lst[0].split(",") if x != userid])}" WHERE number="{form[:-1]}" AND letter="{form[-1]}"')
+        for workid in [x[0] for x in WorksDB().cur.execute('SELECT workid FROM info').fetchall() if x]:
+            self.cur.execute(f'DROP TABLE IF EXISTS "{userid}-{workid}"')
+        self.db.commit()
+
+    def getStudents(self):
+        return self.cur.execute('SELECT userid,name,surname,form FROM students WHERE userid != "teacher"').fetchall()
 
     def delNewWorks(self, workid):
         newworks = self.cur.execute('SELECT userid,newworks FROM students').fetchall()
@@ -320,12 +337,15 @@ def checkPassword(password, hashed_password):
 if __name__ == '__main__':
     a = WorksDB()
     b = DataDB()
-    b.addStudent('teacher', 'Учитель', 'Учительский', '99卐', 'Fox')
+    # a.delWork(1)
+    # print(a.getTasks(3))
+    # print(b.getStudents())
+    # b.addStudent('teacher', 'Учитель', 'Учительский', '99卐', 'Fox')
     # a.addWork('Тест 1', 10, 'ТЕСТ', ['/STATIC/Tasks/t0e0.jpg', '/STATIC/Tasks/t0e1.jpg', '/STATIC/Tasks/t0e2.jpg'], [1, 2, 3])
-    # a.addWork('Контрольная 1', 10, 'КОНТРОЛЬНАЯ', ['/STATIC/Tasks/t0e0.jpg', '/STATIC/Tasks/t0e1.jpg'], [1, 2])
-    b.addStudent('deniskairiska', 'Дмитрий', 'Суперский', '10И', 'kek')
-    b.addStudent('supernagibatel', 'Кирилл', 'Мефодьевич', '10И', 'kek1')
-    # b.addNewWork(1, ['deniskairiska', 'supernagibatel'])
+    # a.addWork('Контрольная 1', 10, 'КОНТРОЛЬНАЯ', ['/STATIC/Tasks/t0e0.jpg', '/STATIC/Tasks/t0e1.jpg', '/STATIC/Tasks/t0e2.jpg'], [1, 2, 3], [['path1', 'path2'], [], ['path3']])
+    # b.addStudent('deniskairiska', 'Дмитрий', 'Суперский', '10И', 'kek')
+    # b.addStudent('supernagibatel', 'Кирилл', 'Мефодьевич', '10И', 'kek1')
+    # b.addNewWork(3, ['deniskairiska', 'supernagibatel'])
     # b.fromInToDone('deniskairiska', 1)
     # b.fromInToDone('supernagibatel', 1)
     # b.addNewWork(2, ['supernagibatel'])
@@ -338,3 +358,4 @@ if __name__ == '__main__':
     # b.addNewWork(1, ['supernagibatel'])
     # print(b.getDoneStud(1))
     # <id>:<progress>:[39820卐0卍25493卐1卍3523452卐2]
+    # b.delStudent('supernagibatel')
