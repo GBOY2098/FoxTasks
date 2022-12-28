@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_login import LoginManager, login_user, current_user, login_required, logout_user
 from UserLogin import UserLogin
 from Database import WorksDB, DataDB
+from socket import socket, AF_INET, SOCK_DGRAM
 import os.path
 
 
@@ -13,6 +14,17 @@ allowed_tasks_extensions = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'raw', 'tiff', '
 
 def allowed_image(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in allowed_tasks_extensions
+
+
+def get_local_ip():
+    s = socket(AF_INET, SOCK_DGRAM)
+    try:
+        s.connect(('192.255.255.255', 1))
+        ip = s.getsockname()[0]
+    except:
+        ip = '127.0.0.1'
+    s.close()
+    return ip
 
 
 app = Flask(__name__, template_folder='../FRONT', static_folder='../FRONT/STATIC')
@@ -238,4 +250,7 @@ def studentsedit():
 
 if __name__ == '__main__':
     worksDB, dataDB = WorksDB(), DataDB()
-    app.run(host=input('Enter machine IP > '), port=80)
+    # Можно оставить поле пустым
+    print('Enter machine IP or leave blank for autofill.')
+    ip_input = input('> ') 
+    app.run(host=ip_input if ip_input else get_local_ip(), port=80)
