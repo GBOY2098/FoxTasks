@@ -11,7 +11,7 @@ tasks_upload_folder = './FRONT/STATIC/Tasks/'
 allowed_tasks_extensions = {'png', 'jpg', 'jpeg', 'gif', 'bmp', 'raw', 'tiff', 'jp2'}
 
 
-def allowed_file(filename):
+def allowed_image(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in allowed_tasks_extensions
 
 
@@ -101,9 +101,11 @@ def work():
 
         tasks = worksDB.getTasks(id)
         stats = dataDB.getInWorksTasks(userid, id)
+        
         for i in range(len(tasks)):
-            
+            print(tasks[i], stats[i])
             tasks[i] += stats[i]
+        print(tasks)
     return render_template('work.html', id=id, tasks=tasks, range=range, len=len)
 
 @app.route("/teacher", methods=['POST', 'GET'])
@@ -119,18 +121,34 @@ def teacher():
         elif post[-1]=='create_work':
             grade=int(request.form["grade"])
             workid = time()
-            tasks_index, i = 0, 0
-            paths, answers = [], []
-            for file in request.files.values():
-                if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    path = f'{workid}_{tasks_index}.{filename.rsplit(".", 1)[1]}'
-                    answers.append(request.form["answer" + str(i)])
-                    i += 1
-                    paths.append('/STATIC/Tasks/' + path)
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], path))
+            tasks_index = -1
+            images, answers, files = [], [], []
+            # print(request.files)
+            file_requests = request.files
+            
+            # file_id Всегда выглядит, как "image0", "image2" или "file3"
+            for file_id in file_requests:
+                
+                if 'image' in file_id:
                     tasks_index += 1
-            worksDB.addWork(request.form["name"], request.form["grade"], request.form["type"], paths, answers)
+                    image = file_requests[file_id]
+                    if image and allowed_image(image.filename):
+                        imagename = secure_filename(image.filename)
+                        path = f'{workid}_{tasks_index}.{imagename.rsplit(".", 1)[1]}'
+                        answers.append(request.form["answer" + str(tasks_index)])
+                        images.append('/STATIC/Tasks/' + path)
+                        image.save(os.path.join(app.config['UPLOAD_FOLDER'], path))
+                        
+                elif 'file' in file_id:
+                    file = file_requests[file_id]
+                    filename = secure_filename(file.filename)
+                    path = f'{filename.rsplit(".", 1)[0]}({workid}_{tasks_index}).{filename.rsplit(".", 1)[1]}'
+                    # Временно добавляется массив из одного элемента, 
+                    # так как потом потребуется добавлять несколько файлов
+                    files.append(['/STATIC/Tasks/' + path])
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], path))
+                    
+            worksDB.addWork(request.form["name"], request.form["grade"], request.form["type"], images, answers, files)
         elif post[0][-1]=="c":
             grade=int(post[0][:-1:])
         elif post[0].isdigit():
@@ -149,6 +167,7 @@ def teacher():
             dataDB.addNewWork(id, selected)
     works = worksDB.getFormWorks(grade)
     return render_template('teacher.html', works=works)
+
 
 @app.route("/creation", methods=['POST', 'GET'])
 @login_required
